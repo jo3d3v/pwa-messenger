@@ -36,7 +36,7 @@ PWA based messenger
 
 ### Backend
 * REST framework: http://expressjs.com/
-* database: http://mongoosejs.com/ (https://github.com/Automattic/mongoose) für  
+* database: http://mongoosejs.com/ (https://github.com/Automattic/mongoose) für https://www.mongodb.com/de 
 * test tool: https://www.getpostman.com/
 * tutorials:
  * https://scotch.io/tutorials/using-mongoosejs-in-node-js-and-mongodb-applications
