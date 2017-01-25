@@ -7,6 +7,10 @@ PWA based messenger
 * https://flights.airberlin.com/de-DE/progressive-web-app
 * https://developers.google.com/web/updates/2015/12/getting-started-pwa
 
+### Web Manifest
+* concepts:
+ * https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+
 ### Web Push
 * concepts: 
  * https://developers.google.com/web/fundamentals/engage-and-retain/push-notifications/sending-messages
@@ -25,8 +29,11 @@ PWA based messenger
 
 ### Service Worker
 * concepts:
+ * https://developers.google.com/web/fundamentals/getting-started/primers/service-workers
  * https://developers.google.com/web/fundamentals/instant-and-offline/service-worker/lifecycle
  * https://developers.google.com/web/fundamentals/instant-and-offline/service-worker/registration
+ * https://jakearchibald.com/2014/service-worker-first-draft/
+ * https://jakearchibald.github.io/isserviceworkerready/
 * howtos and examples:
  * https://serviceworke.rs/
  * https://github.com/GoogleChrome/samples/tree/gh-pages/service-worker
