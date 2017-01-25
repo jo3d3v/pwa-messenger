@@ -8,18 +8,29 @@ PWA based messenger
 * https://developers.google.com/web/updates/2015/12/getting-started-pwa
 
 ### Web Push
-* https://developers.google.com/web/fundamentals/engage-and-retain/push-notifications/sending-messages
-* https://github.com/GoogleChrome/propel
-* https://github.com/web-push-libs/web-push (with support matrix: VAPID...)
-* example: https://github.com/GoogleChrome/samples/tree/gh-pages/push-messaging-and-notifications
+* concepts: 
+ * https://developers.google.com/web/fundamentals/engage-and-retain/push-notifications/sending-messages
+* libs:
+ * https://github.com/GoogleChrome/propel
+ * https://github.com/web-push-libs/web-push (with support matrix: VAPID...)
+* example:
+ * https://github.com/GoogleChrome/samples/tree/gh-pages/push-messaging-and-notifications
 
-### Caching
+### Caching and Offline contents
+* concepts:
+ * https://developers.google.com/web/fundamentals/instant-and-offline/web-storage/offline-for-pwa
+ * https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/
+ * AppShell: https://developers.google.com/web/fundamentals/architecture/app-shell
 * https://github.com/localForage/localForage
 
 ### Service Worker
-* https://serviceworke.rs/
-* https://github.com/GoogleChrome/samples/tree/gh-pages/service-worker
-* https://developers.google.com/web/tools/service-worker-libraries/
+* concepts:
+ * https://developers.google.com/web/fundamentals/instant-and-offline/service-worker/lifecycle
+ * https://developers.google.com/web/fundamentals/instant-and-offline/service-worker/registration
+* howtos and examples:
+ * https://serviceworke.rs/
+ * https://github.com/GoogleChrome/samples/tree/gh-pages/service-worker
+ * https://developers.google.com/web/tools/service-worker-libraries/
 *  libs:
  * https://github.com/GoogleChrome/sw-toolbox
 
