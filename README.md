@@ -20,8 +20,8 @@ PWA based messenger
 * https://serviceworke.rs/
 * https://github.com/GoogleChrome/samples/tree/gh-pages/service-worker
 * https://developers.google.com/web/tools/service-worker-libraries/
-#### libs:
-* https://github.com/GoogleChrome/sw-toolbox
+*  libs:
+ * https://github.com/GoogleChrome/sw-toolbox
 
 ### HomeScreen integration/Add to HomeScreen and Appearance
 * https://codelabs.developers.google.com/codelabs/add-to-home-screen
@@ -38,10 +38,9 @@ PWA based messenger
 * REST framework: http://expressjs.com/
 * database: http://mongoosejs.com/ (https://github.com/Automattic/mongoose) für  
 * test tool: https://www.getpostman.com/
-
-#### tutorials:
-* https://scotch.io/tutorials/using-mongoosejs-in-node-js-and-mongodb-applications
-* https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4
+* tutorials:
+ * https://scotch.io/tutorials/using-mongoosejs-in-node-js-and-mongodb-applications
+ * https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4
 
 ## Example Apps
 * Telegram: https://github.com/zhukov/webogram
