@@ -1,6 +1,6 @@
 import * as http from 'http';
 import * as Debug from 'debug';
-import * as server from './Server';
+import * as server from './server';
 
 const debug = Debug('pwa-messenger:server');
 

@@ -9,7 +9,7 @@ import * as errorHandler from 'errorhandler';
  */
 export class Server {
 
-    public app: express.Application;
+    public express: express.Application;
 
     /**
      * Bootstrap the application.
@@ -17,7 +17,7 @@ export class Server {
      * @return {express.Application} Returns the newly created express application.
      */
     public static bootstrap(): express.Application {
-        return new Server().app;
+        return new Server().express;
     }
 
     /**
@@ -26,9 +26,7 @@ export class Server {
      */
     constructor() {
         // creating expressjs server/application
-        this.app = express();
-
-        // 
+        this.express = express();
         this.middleware();
         this.routes();
     }
@@ -37,14 +35,14 @@ export class Server {
      * Configure application.
      */
     private middleware(): void {
-        this.app.use(logger('dev'));
-        this.app.use(bodyParser.json());
-        this.app.use(bodyParser.urlencoded({
+        this.express.use(logger('dev'));
+        this.express.use(bodyParser.json());
+        this.express.use(bodyParser.urlencoded({
             extended: false
         }));
 
         //catch 404 and forward to error handler
-        this.app.use(function (err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
+        this.express.use(function (err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
             err.status = 404;
             next(err);
         });
@@ -52,7 +50,7 @@ export class Server {
         //error handling
         if (process.env.NODE_ENV === 'development') {
             // only use in development
-            this.app.use(errorHandler());
+            this.express.use(errorHandler());
         }
     }
 
@@ -67,10 +65,10 @@ export class Server {
         // placeholder route handler
         router.get('/', (req, res, next) => {
             res.json({
-                message: 'Hello PWA user!'
+                message: 'Hello PWA!'
             });
         });
-        this.app.use('/', router);
+        this.express.use('/', router);
     }
 
 }
