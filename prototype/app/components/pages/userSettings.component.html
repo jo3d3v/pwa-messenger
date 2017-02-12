@@ -1,0 +1,24 @@
+<md-toolbar color="primary" class="pwa-toolbar">
+    <button md-button routerLink="/" class="pwa-back-link">
+        <md-icon> navigate_before </md-icon>
+        <span class="header-title">Settings</span>
+    </button>
+    <span class="spacer"></span>
+
+    <!-- settings menu -->
+    <button md-icon-button [mdMenuTriggerFor]="settingsOptions">
+        <md-icon> more_vert </md-icon>
+    </button>
+
+    <md-menu #settingsOptions="mdMenu">
+        <button md-menu-item>
+            <span> Edit profile </span>
+        </button>
+        <button md-menu-item>
+            <span> Change username </span>
+        </button>
+    </md-menu>
+</md-toolbar>
+<div class="pwa-content">
+    List of user settings
+</div>

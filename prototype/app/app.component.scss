@@ -1,0 +1,36 @@
+
+// Navigation Toolbar
+
+.spacer {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+.header-title {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+[md-button].pwa-back-link {
+  line-height: 64px;
+  margin-left: -16px;
+
+  .material-icons {
+    margin-right: 12px;
+  }
+}
+
+.pwa-logo {
+  background: rgba(255,255,255,0.5);
+  border: transparent;
+  border-radius: 100%;
+  display: inline-block;
+  height: 40px;
+  margin-right: 16px;
+  width: 40px;
+}
+
+.pwa-content {
+  padding: 16px;
+}
