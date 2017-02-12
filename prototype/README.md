@@ -2,5 +2,5 @@
 Prototype for PWA based messenger
 
 ## Start Application
-npm install
+npm install    
 npm start
