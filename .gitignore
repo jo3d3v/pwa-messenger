@@ -5,4 +5,8 @@ dll
 **/.tscache
 **/dist/
 
+prototype/**/*.css
+prototype/**/*.js
+prototype/**/*.js.map
+prototype/**/typings
 .idea/
