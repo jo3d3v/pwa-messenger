@@ -1,12 +1,12 @@
 import * as http from 'http';
 import * as Debug from 'debug';
-import * as server from './server';
+import { Server } from './server';
 
 const debug = Debug('pwa-messenger:server');
 
 // create http server
 const httpPort = normalizePort(process.env.PORT || 8080);
-let app = server.Server.bootstrap();
+let app = Server.bootstrap();
 app.set('port', httpPort);
 const httpServer = http.createServer(app);
 

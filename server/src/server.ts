@@ -3,6 +3,7 @@ import * as express from 'express';
 import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
 import * as errorHandler from 'errorhandler';
+import * as sourceRouter from './routes/SourceRouter';
 
 /**
  * The server. Creates and configures an ExpressJS web server.
@@ -68,7 +69,11 @@ export class Server {
                 message: 'Hello PWA!'
             });
         });
+
+        sourceRouter.SourceRouter.create(router);
+
         this.express.use('/', router);
+        
     }
 
 }

@@ -5,13 +5,17 @@ const ts = require('gulp-typescript');
 const tsProject = ts.createProject('tsconfig.json');
 
 gulp.task('scripts', () => {
-  const tsResult = tsProject.src()
-  .pipe(tsProject());
-  return tsResult.js.pipe(gulp.dest('dist'));
+    const tsResult = tsProject.src()
+        .pipe(tsProject());
+    return tsResult.js.pipe(gulp.dest('dist'));
 });
 
-gulp.task('watch', ['scripts'], () => {
-  gulp.watch('src/**/*.ts', ['scripts']);
+gulp.task('copyAssets', () => {
+    return gulp.src('src/*.json').pipe(gulp.dest('dist'));
+});
+
+gulp.task('watch', ['scripts', 'copyAssets'], () => {
+    gulp.watch('src/**/*.ts', ['scripts']);
 });
 
 gulp.task('default', ['watch']);
