@@ -1,0 +1,9 @@
+<md-toolbar color="primary" class="pwa-toolbar">
+    <button *ngIf="back" md-icon-button routerLink="/" class="ajs-back-link">
+        <md-icon> navigate_before </md-icon>
+    </button>
+    <span class="pwa-logo"></span>
+    <span class="header-title">{{ title }}</span>
+    <span class="spacer"></span>
+    <ng-content></ng-content>
+</md-toolbar>

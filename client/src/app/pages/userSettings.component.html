@@ -1,0 +1,18 @@
+<ajs-navbar [title]="'Settings'">
+    <!-- settings menu -->
+    <button md-icon-button [mdMenuTriggerFor]="settingsOptions">
+        <md-icon> more_vert </md-icon>
+    </button>
+
+    <md-menu #settingsOptions="mdMenu">
+        <button md-menu-item>
+            <span> Edit profile </span>
+        </button>
+        <button md-menu-item>
+            <span> Change username </span>
+        </button>
+    </md-menu>
+</ajs-navbar>
+<div class="pwa-content">
+    List of user settings
+</div>

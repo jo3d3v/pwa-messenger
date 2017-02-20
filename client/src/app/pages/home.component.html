@@ -1,0 +1,25 @@
+<ajs-navbar [back]=false [title]="'PWA Messager'">
+    <!-- settings menu -->
+    <button md-icon-button [mdMenuTriggerFor]="options">
+        <md-icon> menu </md-icon>
+    </button>
+
+    <md-menu #options="mdMenu">
+        <button md-menu-item routerLink="/offline">
+            <span> *Offline* </span>
+        </button>
+        <button md-menu-item routerLink="/messages">
+            <span> *Contact* </span>
+        </button>
+        <button md-menu-item routerLink="/userSettings">
+            <span> Settings </span>
+        </button>
+        <button md-menu-item>
+            <span> Logout </span>
+        </button>
+    </md-menu>
+</ajs-navbar>
+
+<div class="pwa-content">
+    List of contacts
+</div>

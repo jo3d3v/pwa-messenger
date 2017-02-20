@@ -3,6 +3,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgModule, ApplicationRef } from '@angular/core';
 import { RouterModule, PreloadAllModules } from '@angular/router';
+import { MaterialModule } from '@angular/material';
+
+import '../../node_modules/hammerjs/hammer.js';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -16,6 +19,18 @@ import { AppComponent } from './app.component';
 //import { HomeComponent } from './home';
 //import { AboutComponent } from './about';
 //import { NoContentComponent } from './no-content';
+
+// Components
+import { NavbarComponent } from './navbar/navbar.component';
+
+// Pages
+import { HomeComponent } from './pages/home.component';
+import { MessagesComponent } from './pages/messages.component';
+import { UserSettingsComponent } from './pages/userSettings.component';
+import { OfflineComponent } from './pages/offline.component';
+
+// Routing
+import { routing } from './app.routing';
 
 //import '../styles/styles.scss';
 //import '../styles/headings.css';
@@ -33,6 +48,11 @@ import { AppComponent } from './app.component';
     bootstrap: [AppComponent],
     declarations: [
         AppComponent,
+        NavbarComponent,
+        HomeComponent,
+        MessagesComponent,
+        UserSettingsComponent,
+        OfflineComponent
         //AboutComponent,
         //HomeComponent,
         //NoContentComponent
@@ -41,6 +61,8 @@ import { AppComponent } from './app.component';
         BrowserModule,
         FormsModule,
         HttpModule,
+        MaterialModule.forRoot(),
+        routing
         //RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
     ],
     providers: [ // expose our Services and Providers into Angular's dependency injection
