@@ -22,6 +22,7 @@ import { AppComponent } from './app.component';
 
 // Components
 import { NavbarComponent } from './navbar/navbar.component';
+import { ContactComponent } from './contact/contact.component';
 
 // Pages
 import { HomeComponent } from './pages/home.component';
@@ -49,6 +50,7 @@ import { routing } from './app.routing';
     declarations: [
         AppComponent,
         NavbarComponent,
+        ContactComponent,
         HomeComponent,
         MessagesComponent,
         UserSettingsComponent,
