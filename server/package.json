@@ -4,8 +4,11 @@
   "description": "Restful backend for a pwa-messenger.",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/index.js",
-    "dev": "DEBUG=* NODE_ENV=development node dist/index.js",
+    "start": "DEBUG=* NODE_ENV=development node ./dist/index.js",
+    "copy": "copyfiles -u 1 src/*.json dist",
+    "compile": "npm run copy && tsc",
+    "watch": "npm run clean && nodemon --ignore dist/ -e ts,json  --exec \"npm run compile && npm run start\"",
+    "clean": "rimraf dist",
     "test": "mocha --reporter spec --compilers ts:ts-node/register test/**/*.test.ts"
   },
   "repository": {
@@ -29,9 +32,10 @@
     "@types/node": "^7.0.4",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
-    "gulp": "^3.9.1",
-    "gulp-typescript": "^3.1.4",
+    "copyfiles": "^1.2.0",
     "mocha": "^3.2.0",
+    "nodemon": "^1.11.0",
+    "rimraf": "^2.6.0",
     "ts-node": "^2.0.0",
     "typescript": "^2.2.0-dev.20170128"
   },
