@@ -1,43 +1,24 @@
 {
-    "overview": {
-        "results": [
-            {
-                "sourceId": "1",
-                "name": "Chuck Norris",
-                "lastMessage": "Ich mag meinen Kaffee schwarz und ohne Wasser..",
-                "lastMessageTimestamp": 1486910910,
-                "type": "Allstar"
-            },
-            {
-                "sourceId": "2",
-                "name": "Mario",
-                "lastMessage": "It'se Mee, Mario.",
-                "lastMessageTimestamp": 1486158923,
-                "type": "Videogames"
-            },
-            {
-                "sourceId": "3",
-                "name": "Superman",
-                "lastMessage": "Pack das Kryptonit weg!",
-                "lastMessageTimestamp": 1483308139,
-                "type": "Allstar"
-            }
-        ],
-        "totalSize": 3
-    },
-    "details": {
-        "results": [
-            {
-                "message": "Ich mag meinen Kaffee schwarz und ohne Wasser..",
-                "timestamp": 1486910910,
-                "type": "Allstar"
-            },
-            {
-                "message": "Ich habe zweimal bis zur Unendlichkeit gezählt ... jetzt ist mir langweilig.",
-                "tmestamp": 1486331520,
-                "type": "Allstar"
-            }
-        ],
-        "totalSize": 2
-    }
+    "sourceTestdata": [
+        {
+            "name": "LV - 931",
+            "type": "SCS"
+        },
+        {
+            "name": "7432 - EZR-R",
+            "type": "MKO"
+        },
+        {
+            "name": "OSL - A 111",
+            "type": "MKO"
+        },
+        {
+            "name": "5342422 UZ",
+            "type": "SCS"
+        },
+        {
+            "name": "U KP-4",
+            "type": "SCS"
+        }
+    ]
 }

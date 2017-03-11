@@ -3,14 +3,30 @@ import * as express from 'express';
 import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
 import * as errorHandler from 'errorhandler';
-import * as sourceRouter from './routes/SourceRouter';
+import { SourceRouter } from './routes/SourceRouter';
+import { Database } from './database';
+import * as Debug from 'debug';
+
+
+const debug = Debug('pwa-messenger:server');
 
 /**
- * The server. Creates and configures an ExpressJS web server.
+ * The server. 
+ * Creates and configures an ExpressJS web server.
  */
 export class Server {
 
     public express: express.Application;
+
+    /**
+     * Constructor.
+     * Runs configuration method on the express instance.
+     */
+    constructor() {
+        this.express = express();
+        this.configure();
+        this.routes();
+    }
 
     /**
      * Bootstrap the application.
@@ -22,20 +38,9 @@ export class Server {
     }
 
     /**
-     * Constructor.
-     * Runs configuration method on the express instance.
-     */
-    constructor() {
-        // creating expressjs server/application
-        this.express = express();
-        this.middleware();
-        this.routes();
-    }
-
-    /**
      * Configure application.
      */
-    private middleware(): void {
+    private configure(): void {
         this.express.use(logger('dev'));
         this.express.use(bodyParser.json());
         this.express.use(bodyParser.urlencoded({
@@ -53,27 +58,18 @@ export class Server {
             // only use in development
             this.express.use(errorHandler());
         }
+
+        Database.init();
     }
 
     /**
      * Configuring the routes.
      */
     private routes(): void {
-        /* This is just to get up and running, and to make sure what we've got is
-         * working so far. This function will change when we start to add more
-         * API endpoints */
-        let router = express.Router();
-        // placeholder route handler
-        router.get('/', (req, res, next) => {
-            res.json({
-                message: 'Hello PWA!'
-            });
-        });
+        ;
 
-        sourceRouter.SourceRouter.create(router);
+        this.express.use('/', SourceRouter.routes());
 
-        this.express.use('/', router);
-        
     }
 
 }

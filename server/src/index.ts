@@ -2,7 +2,7 @@ import * as http from 'http';
 import * as Debug from 'debug';
 import { Server } from './server';
 
-const debug = Debug('pwa-messenger:server');
+const debug = Debug('pwa-messenger:init');
 
 // create http server
 const httpPort = normalizePort(process.env.PORT || 8080);

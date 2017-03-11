@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MdToolbarModule, MdMenuModule } from '@angular/material';
 
 @Component({
-    selector: 'ajs-navbar',
+    selector: 'connect-navbar',
     templateUrl: 'navbar.component.html'
 })
 export class NavbarComponent {

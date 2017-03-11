@@ -1,65 +1,52 @@
 import {
     Router,
     Request,
-    Response,
-    NextFunction
+    Response
 } from 'express';
 import * as Debug from 'debug';
+import { Source } from "../models/SourceModel";
 
 const Sources = require('../data.json');
 const debug = Debug('pwa-messenger:SourceRouter');
+const DUMMY_DATA = require('../data.json');
 
+/**
+ * Router for the message sources.
+ */
 export class SourceRouter {
 
     /**
      * Create the routes.
      */
-    public static create(router: Router) {
-        // log
-        console.log('[SourceRouter::create] Creating index route.');
+    public static routes(): Router {
+        debug('Creating source routes.');
 
-        // add route to get an overview of all sources and their last message
-        router.get('/source', (req: Request, res: Response, next: NextFunction) => {
-            new SourceRouter().getAll(req, res, next);
-        });
+        return Router()
 
-        // add route to get source by id
-        router.get('/source/:id', (req: Request, res: Response, next: NextFunction) => {
-            new SourceRouter().getById(req, res, next);
-        });
+            // add route to get all sources and their last message
+            .get('/source', async (reques: Request, response: Response) => {
+                let sources = await Source.list();
+                response.status(200).send(sources);
+            })
+
+            // add route to put in some test data
+            .put('/source/testdata', async (request: Request, response: Response) => {
+                let count = await Source.count({});
+                if (count > 0) {
+                    debug('There exist already ' + count + ' source(s). No test data will be created!');
+                    response.status(409).send('There exists already some data at the database.');
+                } else {
+                    debug('No data found. Create some test data.');
+                    Source.create(DUMMY_DATA.sourceTestdata)
+                        .then(() => response.sendStatus(200))
+                        .catch((err) => response.status(500).send(err));
+                }
+            })
+
+            // add route to get source by id
+            .get('/source/:id', (request: Request, response: Response) => {
+                
+            });
     }
-
-    /**
-     * Initialize the SourceRouter
-     */
-    constructor() { }
-
-    /**
-     * GET all sources.
-     */
-    public getAll(req: Request, res: Response, next: NextFunction) {
-        res.send(Sources.overview);
-    }
-
-    /**
-     * GET messages of one source by id
-     */
-    public getById(req: Request, res: Response, next: NextFunction) {
-        let query = parseInt(req.params.id);
-        debug(query);
-        
-        let source = Sources.details2;
-        if (source) {
-            res.status(200).send(source);
-        }
-        else {
-            res.status(404)
-                .send({
-                    message: 'No source found with the given id.',
-                    status: res.status
-                });
-        }
-    }
-
 }
 

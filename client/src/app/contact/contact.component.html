@@ -1,20 +1,7 @@
 <md-list>
     <md-list-item *ngFor="let contact of contacts">
-        <img md-list-avatar src="" alt="">
-        <h4 md-line>{{contact.name}} ({{contact.updated | date}})</h4>
-        <p md-line> {{contact.lastMessage}} </p>
-        <div class="list-menu">
-            <!-- settings menu -->
-            <button md-icon-button [mdMenuTriggerFor]="options">
-                <md-icon> more_vert </md-icon>
-            </button>
-
-            <md-menu #options="mdMenu">
-                <button md-menu-item>
-                    <span> Delete contact </span>
-                </button>
-            </md-menu>
-        </div>
-
+        <span md-list-avatar class="conntect-avatar truck" ngClass="icon-{{contact.type}}"></span>
+        <h4 md-line><span class="contact-title">{{contact.name}}</span><span class="contact-date">{{contact.updated | date}}</span></h4>
+        <p class="contact-message" md-line>{{contact.lastMessage}}</p>
     </md-list-item>
 </md-list>

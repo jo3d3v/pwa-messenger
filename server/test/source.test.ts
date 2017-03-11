@@ -10,7 +10,7 @@ const expect = chai.expect;
 
 describe('GET /source', () => {
 
-    it('responds with JSON containing result-array and totalsize', () => {
+    xit('responds with JSON containing result-array and totalsize', () => {
         return chai.request(app).get('/source')
             .then(res => {
                 let messageCount = 3;
@@ -22,7 +22,7 @@ describe('GET /source', () => {
             });
     });
 
-    it('response should contain Chuck Norris', () => {
+    xit('response should contain Chuck Norris', () => {
         return chai.request(app).get('/source')
             .then(response => {
                 let chuck = response.body.results.find(source => source.name === 'Chuck Norris');
