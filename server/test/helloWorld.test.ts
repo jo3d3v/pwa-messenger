@@ -10,14 +10,14 @@ const expect = chai.expect;
 
 describe('baseRoute', () => {
 
-    it('response should be json', () => {
+    xit('response should be json', () => {
         return chai.request(app).get('/')
             .then(response => {
                 expect(response.type).to.eql('application/json');
             });
     });
 
-    it('response should have a message property', () => {
+    xit('response should have a message property', () => {
         return chai.request(app).get('/')
             .then(response => {
                 expect(response.body.message).eql('Hello PWA!');

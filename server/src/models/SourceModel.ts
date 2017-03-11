@@ -1,28 +1,46 @@
 import * as mongoose from 'mongoose';
-import { ISourceDocument } from "../interfaces/ISourceDocument";
+import { ISource } from "../shared/ISource";
+
+export interface ISourceDocument extends ISource, mongoose.Document { }
+
+export interface ISourceModel {
+    list(): Promise<ISourceDocument[]>
+}
 
 /** 
  * Create the mongoose source schema and a pre-save method to set the updated-at timestamp.
  */
-const sourceSchema: mongoose.Schema = new mongoose.Schema({
+const schema: mongoose.Schema = new mongoose.Schema({
     name: String,
     type: String,
     created: {
-      type: Date,
-      default: Date.now
+        type: Date,
+        default: Date.now
     },
     updated: {
-      type: Date,
-      default: Date.now
+        type: Date,
+        default: Date.now
     }
-})
-.pre("save", (next) => {
+});
+
+schema.pre("save", (next) => {
     this.updated = new Date();
     next();
 });
 
+schema.statics.list = () => {
+    try {
+        let query = Source.find();
+        return query.exec();
+    } catch (err) {
+        return Promise.reject(err);
+    }
+};
+
+
 /**
- * The mongoose model of a source.
+ * The mongoose type and model of a source.
  */
-export const SourceModel: mongoose.Model<ISourceDocument> = mongoose.model<ISourceDocument>('Source', sourceSchema);
+export type SourceModel = mongoose.Model<ISourceDocument> & ISourceModel;
+export const Source: SourceModel = <SourceModel> mongoose.model<ISourceDocument>('Source', schema);
 

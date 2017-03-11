@@ -66,11 +66,9 @@ export class Server {
      * Configuring the routes.
      */
     private routes(): void {
-        let router = express.Router();
+        ;
 
-        SourceRouter.create(router);
-
-        this.express.use('/', router);
+        this.express.use('/', SourceRouter.routes());
 
     }
 
