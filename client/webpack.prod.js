@@ -16,13 +16,16 @@ module.exports = webpackMerge(commonConfig, {
         path: buildHelper.addRoot('dist'),
 
         /** IMPORTANT: You must not specify an absolute path here! */
-        filename: '[name].[chunkhash].bundle.js',
+        // removed .[chunkhash]
+        filename: '[name].bundle.js',
 
         /** The filename of the SourceMaps for the JavaScript files. */
-        sourceMapFilename: '[name].[chunkhash].bundle.map',
+        // removed .[chunkhash]
+        sourceMapFilename: '[name].bundle.map',
 
         /** The filename of non-entry chunks as relative path */
-        chunkFilename: '[id].[chunkhash].chunk.js'
+        // removed .[chunkhash]
+        chunkFilename: '[id].chunk.js'
 
     },
 

@@ -27,6 +27,7 @@
     "node_modules",
     "dist",
     "src/main.aot.ts",
+    "src/sw.js",
     "src/**/*.spec.ts",
     "src/**/*.e2e.ts"
   ],

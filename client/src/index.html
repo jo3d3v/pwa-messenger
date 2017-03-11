@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PWA-Messenger</title>
-    <meta name="description" content="PWA-Messenger">
+    <title>CBT Messenger</title>
+    <meta name="description" content="CBT Messenger">
     <!-- windows mobile -->
     <meta name="msapplication-TileColor" content="#00bcd4">
     <meta name="msapplication-TileImage" content="/assets/icon/ms-icon-144x144.png">
@@ -22,11 +22,11 @@
     <link rel="apple-touch-icon" sizes="152x152" href="/assets/icon/apple-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-icon-180x180.png">
     <!-- pwa icons -->
-    <link rel="icon" type="mage/png" sizes="32x32" href="/assets/icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon/android-icon-192x192.png">
     <!-- favicons -->
-    <link rel="icon" type="mage/png" sizes="16x16" href="/assets/icon/favicon-16x16.png">
-    <link rel="icon" type="mage/png" sizes="32x32" href="/assets/icon/favicon-32x32.png">
-    <link rel="icon" type="mage/png" sizes="96x96" href="/assets/icon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/icon/favicon-96x96.png">
     <!-- material design icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- fonts -->
@@ -35,15 +35,31 @@
     <script src="https://use.fontawesome.com/de156a628b.js"></script>
     <!-- base url -->
     <base href="/">
+    <!-- web manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <!-- register serviceWorker -->
+    <script type="application/javascript">
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('./sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    // TODO then case
+                }).catch(function (err) {
+                    console.error('ServiceWorker registration failed', err);
+                })
+            });
+        }
+    </script>
 </head>
 
 <body>
     <app>
     </app>
     <% if (htmlWebpackPlugin.options.metadata.isDevServer) { %>
-    <!-- Webpack Dev Server reload -->
-    <script src="/webpack-dev-server.js"></script>
-    <% } %>
+        <!-- Webpack Dev Server reload -->
+        <script src="/webpack-dev-server.js"></script>
+        <% } %>
 </body>
 
 </html>

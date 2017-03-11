@@ -137,6 +137,15 @@ module.exports = {
         new CopyWebpackPlugin([{
             from: 'src/assets',
             to: 'assets'
+        },{
+            from: 'src/favicon.ico',
+            to: 'favicon.ico'
+        }, {
+            from: 'src/manifest.json',
+            to: 'manifest.json'
+        }, {
+            from: 'src/sw.js',
+            to: 'sw.js'
         }]),
 
         new HtmlWebpackPlugin({

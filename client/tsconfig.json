@@ -29,7 +29,8 @@
     },
     "exclude": [
         "node_modules",
-        "dist"
+        "dist",
+        "src/sw.js"
     ],
     "awesomeTypescriptLoaderOptions": {
         "forkChecker": true,
