@@ -5,11 +5,22 @@ import {
     NextFunction
 } from 'express';
 import * as Debug from 'debug';
+import { SourceService } from "../services/SourceService";
+import { SourceModel } from "../models/SourceModel";
+import { ISourceDocument } from "../interfaces/ISourceDocument";
 
 const Sources = require('../data.json');
 const debug = Debug('pwa-messenger:SourceRouter');
 
+/**
+ * Router for the message sources.
+ */
 export class SourceRouter {
+
+    /**
+     * Initialize the SourceRouter
+     */
+    constructor() { }
 
     /**
      * Create the routes.
@@ -20,7 +31,12 @@ export class SourceRouter {
 
         // add route to get an overview of all sources and their last message
         router.get('/source', (req: Request, res: Response, next: NextFunction) => {
-            new SourceRouter().getAll(req, res, next);
+            new SourceRouter().getAll(res);
+        });
+
+        // add route to put in some test data
+        router.put('/source/testdata', (req: Request, res: Response, next: NextFunction) => {
+            new SourceRouter().putTestdata(res);
         });
 
         // add route to get source by id
@@ -30,15 +46,31 @@ export class SourceRouter {
     }
 
     /**
-     * Initialize the SourceRouter
+     * GET all sources.
+     * @param response the response to write to
      */
-    constructor() { }
+    public getAll(response: Response) {
+        let service: SourceService = new SourceService();
+
+        service.findAll().then((data) => {
+            response.status(200).send(data);
+        });
+    }
 
     /**
-     * GET all sources.
+     * PUT in some test-data for sources.
+     * @param response the response
      */
-    public getAll(req: Request, res: Response, next: NextFunction) {
-        res.send(Sources.overview);
+    public putTestdata(response: Response) {
+        let service: SourceService = new SourceService();
+
+        service.createTestdata()
+            .then(() => {
+                response.sendStatus(200);
+            })
+            .catch(() => {
+                response.sendStatus(409);
+            });
     }
 
     /**
@@ -47,7 +79,7 @@ export class SourceRouter {
     public getById(req: Request, res: Response, next: NextFunction) {
         let query = parseInt(req.params.id);
         debug(query);
-        
+
         let source = Sources.details2;
         if (source) {
             res.status(200).send(source);
