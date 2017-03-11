@@ -69,12 +69,12 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ['to-string-loader', 'css-loader'],
+                use: ['to-string-loader', 'css-loader?url=false'],
                 exclude: [buildHelper.addRoot('src', 'styles')]
             },
             {
                 test: /\.scss$/,
-                use: ['to-string-loader', 'css-loader', 'sass-loader'],
+                use: ['to-string-loader', 'css-loader?url=false', 'sass-loader'],
                 exclude: [buildHelper.addRoot('src', 'styles')]
             },
             {

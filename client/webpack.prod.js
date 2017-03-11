@@ -38,7 +38,7 @@ module.exports = webpackMerge(commonConfig, {
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: 'css-loader'
+                    use: 'css-loader?url=false'
                 }),
                 include: [buildHelper.addRoot('src', 'styles')]
             },
@@ -48,7 +48,7 @@ module.exports = webpackMerge(commonConfig, {
                 test: /\.scss$/,
                 loader: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: 'css-loader!sass-loader'
+                    use: 'css-loader?url=false!sass-loader'
                 }),
                 include: [buildHelper.addRoot('src', 'styles')]
             },

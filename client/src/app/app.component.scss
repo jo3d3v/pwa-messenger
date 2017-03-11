@@ -61,6 +61,6 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
   width: 40px;
 }
 
-@import "trucks";
+//@import "trucks";
 @import "pages/home.component";
 @import "contact/contact.component";

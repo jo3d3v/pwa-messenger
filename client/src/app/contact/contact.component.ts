@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'connect-contact',
-    templateUrl: 'contact.component.html',
-    styleURLs: 'contact.component.html'
+    styleUrls: ['./contact.component.scss'],
+    templateUrl: 'contact.component.html'
 })
 export class ContactComponent {
     contacts = [
