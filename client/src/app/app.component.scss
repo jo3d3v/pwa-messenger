@@ -42,13 +42,37 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
   flex: 1 1 auto;
 }
 
-.header-title {
+:host /deep/ .header-title {
   font-size: 20px;
   font-weight: 400;
 }
 
-.mat-icon-button.ajs-back-link {
+.mat-toolbar {
+  &.mat-primary {
+    background-color: #4167a9;
+  }
+
+  .mat-icon-button {
+    height: 100%;
+    margin-right: -16px;
+    width: 64px;
+
+    .mat-button-focus-overlay {
+      border-radius: 0;
+    }
+
+    .mat-button-ripple-round {
+      border-radius: 0;
+    }
+  }
+}
+
+.mat-button.back-link {
+  height: 100%;
+  margin-left: -16px;
   margin-right: 16px;
+
+  .header-title { font-size: 20px; }
 }
 
 .connect-logo {
@@ -59,6 +83,14 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
   height: 40px;
   margin-right: 16px;
   width: 40px;
+}
+
+.cdk-overlay-container {
+  margin-top: 64px;
+
+  @media (max-width: 600px) and (orientation: portrait) {
+    margin-top: 56px;
+  }
 }
 
 //@import "trucks";

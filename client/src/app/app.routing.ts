@@ -16,7 +16,7 @@ const appRoutes: Routes = [
         component: HomeComponent
     },
     {
-        path: 'messages',
+        path: 'messages/:id',
         component: MessagesComponent
     },
     {

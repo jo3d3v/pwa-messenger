@@ -1,5 +1,5 @@
-<md-list>
-    <md-list-item *ngFor="let contact of contacts">
+<md-list class="contact-list">
+    <md-list-item *ngFor="let contact of contacts" (click)="gotoMessage(this.contact.id)">
         <span md-list-avatar class="conntect-avatar truck" ngClass="icon-{{contact.type}}"></span>
         <h4 md-line><span class="contact-title">{{contact.name}}</span><span class="contact-date">{{contact.updated | date}}</span></h4>
         <p class="contact-message" md-line>{{contact.lastMessage}}</p>

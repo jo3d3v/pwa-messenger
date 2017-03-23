@@ -1,6 +1,6 @@
 // Home styles
 
-.mat-list {
+:host /deep/ .mat-list {
   .mat-list-item {
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   }

@@ -1,0 +1,35 @@
+<md-list>
+    <h3 md-subheader>12.01.2017</h3>
+    <md-list-item *ngFor="let message of messages">
+        <md-card class="connect-message">
+            <md-card-header class="connect-message-header">
+                <div md-card-avatar class="connect-message-avatar">
+                    <span class="fa" ngClass="fa-{{message.category}}"></span>
+                </div>
+                <md-card-title class="connect-message-title">{{message.message}}</md-card-title>
+            </md-card-header>
+            <md-card-content>
+                <p>
+                    {{message.updated | date:'HH:mm'}}
+                </p>
+            </md-card-content>
+        </md-card>
+    </md-list-item>
+    <md-divider></md-divider>
+    <h3 md-subheader>13.01.2017</h3>
+    <md-list-item *ngFor="let message of messages">
+        <md-card class="connect-message">
+            <md-card-header class="connect-message-header">
+                <div md-card-avatar class="connect-message-avatar">
+                    <span class="fa" ngClass="fa-{{message.category}}"></span>
+                </div>
+                <md-card-title class="connect-message-title">{{message.message}}</md-card-title>
+            </md-card-header>
+            <md-card-content>
+                <p>
+                    {{message.updated | date:'HH:mm'}}
+                </p>
+            </md-card-content>
+        </md-card>
+    </md-list-item>
+</md-list>

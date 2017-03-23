@@ -1,41 +1,61 @@
 // Styles contact
-.mat-list .mat-list-item {
-  .mat-list-avatar {
-    &.conntect-avatar {
-      background: #4167a9;
-      border-radius: 40px;
-      color: #ffffff;
-      line-height: 40px;
-      padding: 5px;
-      text-align: center;
-      width: 80px;
 
-      &::before { font-size: 24px; }
+.mat-list {
+  padding-top: 0;
+
+  .mat-list-item {
+    .mat-list-avatar {
+      &.conntect-avatar {
+        background: #114194;
+        border-radius: 40px;
+        color: #ffffff;
+        line-height: 40px;
+        padding: 5px;
+        text-align: center;
+        width: 80px;
+
+        &::before { font-size: 24px; }
+      }
+    }
+
+    .mat-line {
+      .contact-title {
+        color: #114194;
+        display: inline-block;
+        margin-bottom: 5px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        width: 90%;
+        font-weight: 500;
+
+        @media all and (max-width: 990px) {
+          width: 80%;
+        }
+
+        @media all and (max-width: 560px) {
+          width: 70%;
+        }
+      }
+      .contact-date {
+        color: #999999;
+        display: inline-block;
+        float: right;
+        font-size: 12px;
+        font-weight: 300;
+      }
+      &.contact-message {
+        font-weight: 300;
+      }
     }
   }
 
-  .mat-line {
-    .contact-title {
-      display: inline-block;
-      margin-bottom: 5px;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
-      width: 90%;
-
-      @media all and (max-width: 990px) {
-        width: 80%;
+  &.contact-list {
+    .mat-list-item {
+      &:hover {
+        background-color: #e7ecf4;
+        cursor: pointer;
       }
-
-      @media all and (max-width: 560px) {
-        width: 70%;
-      }
-    }
-    .contact-date {
-      color: #dadada;
-      display: inline-block;
-      float: right;
-      font-size: 12px;
     }
   }
 }
