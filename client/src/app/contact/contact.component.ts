@@ -16,21 +16,21 @@ export class ContactComponent {
             id: '001',
             name: 'Contact 1',
             type: 'MKO',
-            updated: new Date('1/1/16'),
+            updated: new Date('1/28/16'),
             lastMessage: 'Last message, Last message, Last message, Last message'
         },
         {
             id: '002',
-            name: 'Contact 1',
+            name: 'Contact 2',
             type: 'SCS',
             updated: new Date('1/17/16'),
             lastMessage: 'Last message'
         },
         {
             id: '003',
-            name: 'Contact 1',
+            name: 'Contact 3',
             type: 'MKO',
-            updated: new Date('1/28/16'),
+            updated: new Date('1/1/16'),
             lastMessage: 'Last message'
         }
     ];
