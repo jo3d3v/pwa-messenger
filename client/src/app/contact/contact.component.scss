@@ -1,6 +1,6 @@
 // Styles contact
 
-.mat-list {
+:host /deep/ .mat-list {
   padding-top: 0;
 
   .mat-list-item {
@@ -16,6 +16,10 @@
 
         &::before { font-size: 24px; }
       }
+    }
+
+    .mat-list-text {
+      padding: 0 0 0 16px;
     }
 
     .mat-line {

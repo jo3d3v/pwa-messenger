@@ -35,10 +35,10 @@
   &.connect-message {
     clear: both;
     float: left;
-    margin: 16px;
+    margin: 16px 0;
     border-radius: 10px;
     line-height: 18px;
-    max-width: 75%;
+    max-width: 81%;
     width: auto;
     position: relative;
 
@@ -59,7 +59,7 @@
   .mat-card-title {
     margin: 16px 8px;
     font-weight: 300;
-    width: 100%;
+    min-width: 95%;
   }
 }
 
