@@ -47,13 +47,13 @@ export class Server {
             extended: false
         }));
 
-        //catch 404 and forward to error handler
+        // catch 404 and forward to error handler
         this.express.use(function (err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
             err.status = 404;
             next(err);
         });
 
-        //error handling
+        // error handling
         if (process.env.NODE_ENV === 'development') {
             // only use in development
             this.express.use(errorHandler());
@@ -66,8 +66,6 @@ export class Server {
      * Configuring the routes.
      */
     private routes(): void {
-        ;
-
         this.express.use('/', SourceRouter.routes());
 
     }

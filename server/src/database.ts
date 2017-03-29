@@ -5,7 +5,7 @@ const MONGODB_CONNECTION: string = "mongodb://192.168.99.100:28001/pwa";
 
 /**
  * This class handles the connection to the mongo database. 
- * Its done with the use of mongoose.
+ * It's done with the use of mongoose.
  */
 export class Database {
 

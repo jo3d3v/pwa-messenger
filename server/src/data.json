@@ -1,5 +1,5 @@
 {
-    "sourceTestdata": [
+    "sources": [
         {
             "name": "LV - 931",
             "type": "SCS"
@@ -19,6 +19,43 @@
         {
             "name": "U KP-4",
             "type": "SCS"
+        }
+    ],
+    "messages": [
+        {
+            "content": "Die Geschwindigket (92km/h) wurde überschritten bei eingestelltem Grenzwert von 90km/h.",
+            "address": "45349 Münster, Kaiserstraße 10",
+            "type": "SPEED_LIMIT"
+        },
+        {
+            "content": "Tür wurde entriegelt.",
+            "address": "45349 Münster, Kaiserstraße 10",
+            "type": "DOOR_LOCKING_STATE"
+        },
+        {
+            "content": "Kältemaschinen meldet Service notwendig. Thermoking SLX400. Fehlercode 1100 (Motorölstand niedrig).",
+            "address": "45349 Münster, Kaiserstraße 10",
+            "type": "REEFER_ALARM"
+        },
+        {
+            "content": "Kältemaschine wurde ausgeschaltet.",
+            "address": "45349 Münster, Kaiserstraße 10",
+            "type": "REEFER_STATE"
+        },
+        {
+            "content": "Diesel Füllstand (12%) der Kältemaschine hat Mindestfüllstand (15%) unterschritten.",
+            "address": "45349 Münster, Kaiserstraße 10",
+            "type": "REEFER_FUEL_LEVEL_LOW"
+        },
+        {
+            "content": "Temperaturabweichung T1 (5°C) . T1 außerhalb des Bereiches -2°C < T1 < +2°C.",
+            "address": "45349 Münster, Kaiserstraße 10",
+            "type": "TEMPERATURE_ABSOLUTE"
+        },
+        {
+            "content": "Bremsbelag hat Verschleißgrenze erreicht.",
+            "address": "45349 Münster, Kaiserstraße 10",
+            "type": "EBS_LINING_WORN"
         }
     ]
 }
