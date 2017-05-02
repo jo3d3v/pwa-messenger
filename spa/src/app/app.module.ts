@@ -4,11 +4,26 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { ConnectComponent } from './connect.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { SourcesComponent } from './sources/sources.component';
+import { MessagesComponent } from './messages/messages.component';
+
+import { HomeComponent } from './routes/home/home.component';
+import { MessageComponent } from './routes/message/message.component';
+import { UserSettingsComponent } from './routes/user-settings/user-settings.component';
+import { OfflineComponent } from './routes/offline/offline.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    ConnectComponent,
+    HomeComponent,
+    MessageComponent,
+    UserSettingsComponent,
+    OfflineComponent,
+    NavbarComponent,
+    MessagesComponent,
+    SourcesComponent
   ],
   imports: [
     BrowserModule,
@@ -17,6 +32,6 @@ import { AppComponent } from './app.component';
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [ConnectComponent]
 })
 export class AppModule { }
