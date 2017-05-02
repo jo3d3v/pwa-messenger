@@ -4,10 +4,12 @@
   "description": "Restful backend for a pwa-messenger.",
   "main": "index.js",
   "scripts": {
-    "start": "DEBUG=* NODE_ENV=development node ./dist/index.js",
+    "startDev": "DEBUG=* NODE_ENV=development node ./dist/index.js",
+    "start": "NODE_ENV=production node ./dist/index.js",
+    "build": "npm run clean && npm run compile",
     "copy": "copyfiles -u 1 src/*.json dist",
     "compile": "npm run copy && tsc",
-    "watch": "npm run clean && nodemon --ignore dist/ -e ts,json  --exec \"npm run compile && npm run start\"",
+    "watch": "npm run clean && nodemon --ignore dist/ -e ts,json  --exec \"npm run compile && npm run startDev\"",
     "clean": "rimraf dist",
     "test": "mocha --reporter spec --compilers ts:ts-node/register test/**/*.test.ts"
   },

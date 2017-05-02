@@ -1,10 +1,8 @@
 node_modules
 npm-debug.log
 compiled
-dist
 dll
 **/.tscache
-**/dist/
 
 prototype/**/*.css
 prototype/**/*.js
