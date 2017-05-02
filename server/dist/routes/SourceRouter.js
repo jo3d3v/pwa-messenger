@@ -15,6 +15,7 @@ const mongoose = require("mongoose");
 const Sources = require('../data.json');
 const debug = Debug('pwa-messenger:SourceRouter');
 const DUMMY_DATA = require('../data.json');
+const API_PREFIX = '/api';
 /**
  * Router for the message sources.
  */
@@ -25,11 +26,11 @@ class SourceRouter {
     static routes() {
         debug('Creating source routes.');
         return express_1.Router()
-            .get('/source', (request, response) => __awaiter(this, void 0, void 0, function* () {
+            .get(API_PREFIX + '/source', (request, response) => __awaiter(this, void 0, void 0, function* () {
             let sources = yield SourceModel_1.Source.list();
             response.status(200).send(sources);
         }))
-            .get('/source/:id/message', (request, response) => __awaiter(this, void 0, void 0, function* () {
+            .get(API_PREFIX + '/source/:id/message', (request, response) => __awaiter(this, void 0, void 0, function* () {
             try {
                 let messages = yield MessageModel_1.Message.find({ 'source': mongoose.Types.ObjectId(request.params.id) }).sort('-created');
                 response.status(200).send(messages);
@@ -38,7 +39,7 @@ class SourceRouter {
                 response.status(500).send(error);
             }
         }))
-            .put('/source/testdata', (request, response) => __awaiter(this, void 0, void 0, function* () {
+            .put(API_PREFIX + '/source/testdata', (request, response) => __awaiter(this, void 0, void 0, function* () {
             let count = yield SourceModel_1.Source.count({});
             if (count > 0) {
                 debug('There exist already ' + count + ' source(s). No test data will be created!');
@@ -51,7 +52,7 @@ class SourceRouter {
                     .catch((err) => response.status(500).send(err));
             }
         }))
-            .put('/source/message/testdata', (request, response) => __awaiter(this, void 0, void 0, function* () {
+            .put(API_PREFIX + '/source/message/testdata', (request, response) => __awaiter(this, void 0, void 0, function* () {
             let sources = yield SourceModel_1.Source.list();
             if (sources.length == 0) {
                 response.status(400).send('Create some sources first!');

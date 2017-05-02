@@ -7,6 +7,7 @@ import * as mongoose from 'mongoose';
 const Sources = require('../data.json');
 const debug = Debug('pwa-messenger:SourceRouter');
 const DUMMY_DATA = require('../data.json');
+const API_PREFIX = '/api';
 
 /**
  * Router for the message sources.
@@ -22,13 +23,13 @@ export class SourceRouter {
         return Router()
 
             // add route to get all sources and their last message
-            .get('/source', async (request: Request, response: Response) => {
+            .get(API_PREFIX + '/source', async (request: Request, response: Response) => {
                 let sources: ISourceDocument[] = await Source.list();
                 response.status(200).send(sources);
             })
 
             // add route to get source by id
-            .get('/source/:id/message', async (request: Request, response: Response) => {
+            .get(API_PREFIX + '/source/:id/message', async (request: Request, response: Response) => {
                 try {
                     let messages: IMessageDocument[] = await Message.find({ 'source': mongoose.Types.ObjectId(request.params.id) }).sort('-created');
                     response.status(200).send(messages)
@@ -38,7 +39,7 @@ export class SourceRouter {
             })
 
             // add route to put in some test data
-            .put('/source/testdata', async (request: Request, response: Response) => {
+            .put(API_PREFIX + '/source/testdata', async (request: Request, response: Response) => {
                 let count: number = await Source.count({});
 
                 if (count > 0) {
@@ -52,7 +53,7 @@ export class SourceRouter {
                 }
             })
 
-            .put('/source/message/testdata', async (request: Request, response: Response) => {
+            .put(API_PREFIX + '/source/message/testdata', async (request: Request, response: Response) => {
                 let sources: ISourceDocument[] = await Source.list();
                 if (sources.length == 0) {
                     response.status(400).send('Create some sources first!');
