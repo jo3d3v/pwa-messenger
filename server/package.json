@@ -4,7 +4,7 @@
   "description": "Restful backend for a pwa-messenger.",
   "main": "index.js",
   "scripts": {
-    "startDev": "DEBUG=* NODE_ENV=development node ./dist/index.js",
+    "startDev": "DEBUG=* NODE_ENV=development node --debug=5858 ./dist/index.js",
     "start": "NODE_ENV=production node ./dist/index.js",
     "build": "npm run clean && npm run compile",
     "copy": "copyfiles -u 1 src/*.json dist",
@@ -50,6 +50,7 @@
     "errorhandler": "^1.5.0",
     "express": "^4.14.0",
     "mongoose": "^4.8.4",
-    "morgan": "^1.7.0"
+    "morgan": "^1.7.0",
+    "web-push": "^3.2.2"
   }
 }

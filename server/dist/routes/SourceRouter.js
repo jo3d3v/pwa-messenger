@@ -11,11 +11,14 @@ const express_1 = require("express");
 const Debug = require("debug");
 const SourceModel_1 = require("../models/SourceModel");
 const MessageModel_1 = require("../models/MessageModel");
+const SerializedPushSupscriptionModel_1 = require("../models/SerializedPushSupscriptionModel");
 const mongoose = require("mongoose");
+const webpush = require("web-push");
 const Sources = require('../data.json');
 const debug = Debug('pwa-messenger:SourceRouter');
 const DUMMY_DATA = require('../data.json');
 const API_PREFIX = '/api';
+const MAX_PUSH_SUBSCRIPTION_COUNT = 100;
 /**
  * Router for the message sources.
  */
@@ -34,6 +37,32 @@ class SourceRouter {
             try {
                 let messages = yield MessageModel_1.Message.find({ 'source': mongoose.Types.ObjectId(request.params.id) }).sort('-created');
                 response.status(200).send(messages);
+            }
+            catch (error) {
+                response.status(500).send(error);
+            }
+        }))
+            .put(API_PREFIX + '/source/:id/message', (request, response) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                let message = yield SourceRouter.createRandomMessage(request.params.id);
+                yield SourceRouter.pushMessage(message);
+                response.sendStatus(200);
+            }
+            catch (error) {
+                response.status(500).send(error);
+            }
+        }))
+            .post(API_PREFIX + '/push', (request, response) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                let count = yield SerializedPushSupscriptionModel_1.SerializedPushSubscription.count({});
+                if (count < MAX_PUSH_SUBSCRIPTION_COUNT) {
+                    let subscriptions = yield SerializedPushSupscriptionModel_1.SerializedPushSubscription.find(request.body);
+                    if (subscriptions.length === 0) {
+                        SerializedPushSupscriptionModel_1.SerializedPushSubscription.create(request.body);
+                    }
+                }
+                // TODO handle max count
+                response.sendStatus(200);
             }
             catch (error) {
                 response.status(500).send(error);
@@ -80,6 +109,42 @@ class SourceRouter {
                 response.sendStatus(200);
             }
         }));
+    }
+    /**
+     * Creates randomly messages for given source.
+     */
+    static createRandomMessage(sourceId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let source = yield SourceModel_1.Source.findById(mongoose.Types.ObjectId(sourceId));
+            if (source) {
+                let messages = DUMMY_DATA.messages;
+                let message;
+                message = new MessageModel_1.Message(messages[Math.floor(Math.random() * messages.length)]);
+                message.source = source;
+                source.lastMessage = message._id;
+                yield message.save();
+                yield source.save();
+                return message;
+            }
+        });
+    }
+    /**
+     * Pushes a message over the pushing channel.
+     */
+    static pushMessage(message) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let source = message.source.name;
+            let address = message.address;
+            let content = message.content;
+            let subscriptions = yield SerializedPushSupscriptionModel_1.SerializedPushSubscription.list();
+            subscriptions.forEach(subscription => webpush.sendNotification({
+                endpoint: subscription.endpoint,
+                keys: {
+                    auth: subscription.auth,
+                    p256dh: subscription.p256dh
+                }
+            }, `${source}: ${content} (${address})`));
+        });
     }
 }
 exports.SourceRouter = SourceRouter;
