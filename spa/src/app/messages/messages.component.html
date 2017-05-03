@@ -1,3 +1,21 @@
-<p>
-  messages works!
-</p>
+<md-list>
+    <div *ngFor="let message of messages | async; first as isFirst">
+        <md-divider *ngIf="message.showDay && !isFirst"></md-divider>
+        <h3 md-subheader *ngIf="message.showDay">
+            {{message.created | date:'dd.MM.yyyy'}}
+        </h3>
+        <md-list-item>
+            <md-card class="connect-message">
+                <md-card-header class="connect-message-header">
+                    <div md-card-avatar class="connect-message-avatar">
+                        <span class="icon-{{message.type}}"></span>
+                    </div>
+                    <md-card-title class="connect-message-title">{{message.content}} ({{message.address}})</md-card-title>
+                </md-card-header>
+                <md-card-content>
+                    <p>{{message.created | date:'HH:mm'}}</p>
+                </md-card-content>
+            </md-card>
+        </md-list-item>
+    </div>
+</md-list>

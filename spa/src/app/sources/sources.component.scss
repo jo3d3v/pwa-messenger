@@ -1,0 +1,92 @@
+// Contact styles
+
+:host /deep/ .mat-list {
+  .mat-list-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+}
+
+
+// Styles contact
+
+:host /deep/ .mat-list {
+  padding-top: 0;
+
+  .mat-list-item {
+    position: relative;
+    .mat-list-avatar {
+      &.source-avatar {
+        background: #4167a9;
+        border-radius: 40px;
+        color: #ffffff;
+        line-height: 40px;
+        padding: 5px;
+        text-align: center;
+        width: 90px;
+
+        &::before { font-size: 24px; }
+      }
+    }
+
+    .mat-list-text {
+      padding: 0 0 0 16px;
+    }
+
+    .mat-line {
+      .source-title {
+        color: #4167a9;
+        display: inline-block;
+        margin-bottom: 5px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        width: 90%;
+        font-weight: 500;
+
+        @media all and (max-width: 990px) {
+          width: 80%;
+        }
+
+        @media all and (max-width: 560px) {
+          width: 70%;
+        }
+      }
+      .source-date {
+        color: #999999;
+        display: inline-block;
+        float: right;
+        font-size: 12px;
+        font-weight: 300;
+      }
+      &.source-message {
+        font-weight: 300;
+        padding-right: 48px;
+      }
+    }
+
+    .badge {
+      background: #4167a9;
+      border-radius: 10px;
+      color: #ffffff;
+      position: absolute;
+      right: 16px;
+      bottom: 12px;
+      width: auto;
+      min-width: 20px;
+      height: 17px;
+      padding: 3px 4px 0;
+      text-align: center;
+      font-size: 12px !important;
+
+    }
+  }
+
+  &.source-list {
+    .mat-list-item {
+      &:hover {
+        background-color: #e7ecf4;
+        cursor: pointer;
+      }
+    }
+  }
+}

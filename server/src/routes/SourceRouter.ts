@@ -31,6 +31,12 @@ export class SourceRouter {
                 response.status(200).send(sources);
             })
 
+            // add route to get all sources and their last message
+            .get(API_PREFIX + '/source/:id', async (request: Request, response: Response) => {
+                 let source: ISourceDocument = await Source.findById(mongoose.Types.ObjectId(request.params.id));
+                response.status(200).send(source);
+            })
+
             // add route to get source by id
             .get(API_PREFIX + '/source/:id/message', async (request: Request, response: Response) => {
                 try {

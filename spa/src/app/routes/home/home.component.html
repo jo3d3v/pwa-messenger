@@ -1,3 +1,13 @@
-<p>
-  home works!
-</p>
+<connect-navbar [back]=false [title]="'CBT Connect'">
+    <button md-icon-button [mdMenuTriggerFor]="options">
+        <md-icon>menu</md-icon>
+    </button>
+
+    <md-menu #options="mdMenu">
+        <button md-menu-item>
+            <span> Abmelden </span>
+        </button>
+    </md-menu>
+</connect-navbar>
+
+<connect-sources></connect-sources>

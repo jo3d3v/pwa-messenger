@@ -3,6 +3,7 @@ import * as express from 'express';
 import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
 import * as errorHandler from 'errorhandler';
+import * as compression from 'compression';
 import { SourceRouter } from './routes/SourceRouter';
 import { Database } from './database';
 import * as Debug from 'debug';
@@ -41,11 +42,20 @@ export class Server {
      * Configure application.
      */
     private configure(): void {
+        this.express.use(compression());
         this.express.use(logger('dev'));
         this.express.use(bodyParser.json());
         this.express.use(bodyParser.urlencoded({
             extended: false
         }));
+        this.express.use(function (req: express.Request, res: express.Response, next: express.NextFunction) {
+            res.header('Access-Control-Allow-Origin', '*');
+            res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+            next();
+        });
+        // Create link to Angular build directory
+        let distDir = __dirname + '/../../spa/dist/';
+        this.express.use(express.static(distDir));
 
         // catch 404 and forward to error handler
         this.express.use(function (err: any, req: express.Request, res: express.Response, next: express.NextFunction) {

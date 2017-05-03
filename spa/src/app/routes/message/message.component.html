@@ -1,3 +1,14 @@
-<p>
-  message works!
-</p>
+<connect-navbar [type]="source ? source.type : ''" [title]="source ? source.name : 'wird geladen...'">
+  <!-- settings menu -->
+  <button md-icon-button [mdMenuTriggerFor]="options">
+        <md-icon> more_vert </md-icon>
+    </button>
+
+  <md-menu #options="mdMenu">
+    <button md-menu-item>
+            <span> Optionen </span>
+        </button>
+  </md-menu>
+</connect-navbar>
+
+<connect-messages></connect-messages>

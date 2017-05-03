@@ -1,3 +1,13 @@
-<p>
-  navbar works!
-</p>
+<md-toolbar color="primary" class="connect-toolbar">
+  <button *ngIf="back; else root" md-button routerLink="/" class="back-link">
+        <md-icon>navigate_before</md-icon>
+        <span class="truck icon-{{ type }}"></span>
+        <span class="header-title">{{ title }}</span>
+    </button>
+  <ng-template #root>
+    <span class="connect-logo"><img src="/assets/img/logo.svg"></span>
+    <span class="header-title">{{ title }}</span>
+  </ng-template>
+  <span class="spacer"></span>
+  <ng-content></ng-content>
+</md-toolbar>

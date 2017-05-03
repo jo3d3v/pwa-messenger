@@ -11,7 +11,7 @@ const routes: Routes = [
         component: HomeComponent
     },
     {
-        path: 'message/:id',
+        path: ':id/messages',
         component: MessageComponent
     },
     {

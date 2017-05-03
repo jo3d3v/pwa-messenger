@@ -1,0 +1,71 @@
+.spacer {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+:host /deep/ .header-title {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.mat-toolbar {
+  &.mat-primary {
+    background-color: #4167a9;
+    position: fixed;
+    top: 0;
+    z-index:10;
+  }
+
+  .mat-icon-button {
+    height: 100%;
+    margin-right: -16px;
+    width: 64px;
+
+    .mat-button-focus-overlay {
+      border-radius: 0;
+    }
+
+    .mat-button-ripple-round {
+      border-radius: 0;
+    }
+  }
+}
+
+.mat-button.back-link {
+  height: 100%;
+  margin-left: -16px;
+  margin-right: 16px;
+
+  .header-title { font-size: 20px; }
+
+  .truck {
+    font-size: 24px;
+    padding-right: 8px;
+  }
+}
+
+.connect-logo {
+  border: transparent;
+  border-radius: 100%;
+  display: inline-block;
+  height: 30px;
+  margin-right: 16px;
+  text-align: center;
+  width: 30px;
+  opacity: 0.87;
+
+  img { width: 30px; }
+}
+
+.cdk-overlay-container {
+  margin-top: 64px;
+
+  @media (max-width: 960px) and (orientation: landscape) {
+    margin-top: 48px;
+  }
+
+  @media (max-width: 600px) and (orientation: portrait) {
+    margin-top: 56px;
+  }
+}

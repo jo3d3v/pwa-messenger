@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MdToolbarModule, MdMenuModule, MdIconModule, MdButtonModule, MdListModule, MdCardModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { ConnectComponent } from './connect.component';
@@ -29,6 +31,13 @@ import { OfflineComponent } from './routes/offline/offline.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    BrowserAnimationsModule,
+    MdToolbarModule,
+    MdMenuModule,
+    MdIconModule,
+    MdButtonModule,
+    MdListModule,
+    MdCardModule,
     AppRoutingModule
   ],
   providers: [],
