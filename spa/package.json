@@ -1,7 +1,7 @@
 {
   "name": "spa",
-  "version": "0.0.0",
-  "license": "MIT",
+  "version": "1.0.0",
+  "description": "SPA for a pwa-messenger.",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,7 +11,16 @@
     "e2e": "ng e2e",
     "postinstall": "ng build --prod"
   },
-  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jo3d3v/pwa-messenger.git"
+  },
+  "author": "jannydiamond cogidoo jo3d3v",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jo3d3v/pwa-messenger/issues"
+  },
+  "homepage": "https://github.com/jo3d3v/pwa-messenger#readme",
   "dependencies": {
     "@angular/animations": "^4.1.0",
     "@angular/common": "^4.0.0",
