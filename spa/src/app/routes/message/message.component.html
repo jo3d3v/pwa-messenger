@@ -5,9 +5,9 @@
     </button>
 
   <md-menu #options="mdMenu">
-    <button md-menu-item>
-            <span> Optionen </span>
-        </button>
+    <button md-menu-item (click)="generateMessage()">
+      <span> Meldung generieren </span>
+    </button>
   </md-menu>
 </connect-navbar>
 

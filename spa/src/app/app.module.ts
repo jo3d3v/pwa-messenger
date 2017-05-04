@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MdToolbarModule, MdMenuModule, MdIconModule, MdButtonModule, MdListModule, MdCardModule } from '@angular/material';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { AppRoutingModule } from './app-routing.module';
 import { ConnectComponent } from './connect.component';
@@ -38,7 +39,8 @@ import { OfflineComponent } from './routes/offline/offline.component';
     MdButtonModule,
     MdListModule,
     MdCardModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ServiceWorkerModule
   ],
   providers: [],
   bootstrap: [ConnectComponent]

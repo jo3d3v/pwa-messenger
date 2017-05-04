@@ -4,6 +4,7 @@ import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
 import * as errorHandler from 'errorhandler';
 import * as compression from 'compression';
+import * as cors from 'cors';
 import { SourceRouter } from './routes/SourceRouter';
 import { Database } from './database';
 import * as Debug from 'debug';
@@ -42,6 +43,8 @@ export class Server {
      * Configure application.
      */
     private configure(): void {
+        this.express.use(cors());
+        this.express.options('*', cors());
         this.express.use(compression());
         this.express.use(logger('dev'));
         this.express.use(bodyParser.json());
@@ -76,8 +79,26 @@ export class Server {
      * Configuring the routes.
      */
     private routes(): void {
-        this.express.use('/', SourceRouter.routes());
+        this.express.use('/api', SourceRouter.routes());
+        this.express.use(function (request: express.Request, response: express.Response) {
+            // respond with html page
+            if (request.accepts('html')) {
+                response.sendfile(__dirname + '/../../spa/dist/index.html');;
+                return;
+            }
 
+            // set status for real 404s
+            response.status(404);
+
+            // respond with json
+            if (request.accepts('json')) {
+                response.send({ error: 'Not found' });
+                return;
+            }
+
+            // default to plain-text. send()
+            response.type('txt').send('Not found');
+        });
     }
 
 }

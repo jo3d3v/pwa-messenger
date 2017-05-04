@@ -4,6 +4,9 @@
     "routes": {
       "/": {
         "prefix": false
+      },
+      "/sources": {
+        "prefix": true
       }
     }
   },

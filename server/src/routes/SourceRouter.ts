@@ -6,10 +6,17 @@ import { SerializedPushSubscription, ISerializedPushSubscriptionDocument } from 
 import * as mongoose from 'mongoose';
 import * as webpush from 'web-push';
 
+const APP_SERVER_PUB_KEY = 'BLnZTN_0nQpHj_WHLdtS3ydYSkBAFF7hotoLSdZfl9-7qnh9hQuEpvxKzgiCqp_5-laBj9vJglQWmzE3ZQ1qx_w';
+const APP_SERVER_PRIVATE_KEY = 'Io7G1ALK8fAKrhcZnFyo0Qu-2Elxpjw9ybvjSCjeKS0';
+webpush.setVapidDetails(
+    'mailto:jo3.d3v@gmail.com',
+    APP_SERVER_PUB_KEY,
+    APP_SERVER_PRIVATE_KEY
+);
+
 const Sources = require('../data.json');
 const debug = Debug('pwa-messenger:SourceRouter');
 const DUMMY_DATA = require('../data.json');
-const API_PREFIX = '/api';
 const MAX_PUSH_SUBSCRIPTION_COUNT = 100;
 
 /**
@@ -26,19 +33,19 @@ export class SourceRouter {
         return Router()
 
             // add route to get all sources and their last message
-            .get(API_PREFIX + '/source', async (request: Request, response: Response) => {
+            .get('/source', async (request: Request, response: Response) => {
                 let sources: ISourceDocument[] = await Source.list();
                 response.status(200).send(sources);
             })
 
             // add route to get all sources and their last message
-            .get(API_PREFIX + '/source/:id', async (request: Request, response: Response) => {
-                 let source: ISourceDocument = await Source.findById(mongoose.Types.ObjectId(request.params.id));
+            .get('/source/:id', async (request: Request, response: Response) => {
+                let source: ISourceDocument = await Source.findById(mongoose.Types.ObjectId(request.params.id));
                 response.status(200).send(source);
             })
 
             // add route to get source by id
-            .get(API_PREFIX + '/source/:id/message', async (request: Request, response: Response) => {
+            .get('/source/:id/message', async (request: Request, response: Response) => {
                 try {
                     let messages: IMessageDocument[] = await Message.find({ 'source': mongoose.Types.ObjectId(request.params.id) }).sort('-created');
                     response.status(200).send(messages);
@@ -48,7 +55,7 @@ export class SourceRouter {
             })
 
             // add route for trigger message
-            .put(API_PREFIX + '/source/:id/message', async (request: Request, response: Response) => {
+            .put('/source/:id/message', async (request: Request, response: Response) => {
                 try {
                     let message: IMessageDocument = await SourceRouter.createRandomMessage(request.params.id);
                     await SourceRouter.pushMessage(message);
@@ -58,8 +65,8 @@ export class SourceRouter {
                 }
             })
 
-            // add push subscription
-            .post(API_PREFIX + '/push', async (request: Request, response: Response) => {
+            // add register push subscription
+            .post('/push', async (request: Request, response: Response) => {
                 try {
                     let count: number = await SerializedPushSubscription.count({});
                     if (count < MAX_PUSH_SUBSCRIPTION_COUNT) {
@@ -75,8 +82,24 @@ export class SourceRouter {
                 }
             })
 
+            // add unregister push subscription
+            .delete('/push', async (request: Request, response: Response) => {
+                try {
+                    let subscriptions: ISerializedPushSubscriptionDocument[] = await SerializedPushSubscription.find(request.body);
+                    if (subscriptions.length > 0) {
+                        subscriptions.forEach((subscription) => {
+                            subscription.remove();
+                        });
+                    }
+                    // TODO handle max count
+                    response.sendStatus(200);
+                } catch (error) {
+                    response.status(500).send(error);
+                }
+            })
+
             // add route to put in some test data
-            .put(API_PREFIX + '/source/testdata', async (request: Request, response: Response) => {
+            .put('/source/testdata', async (request: Request, response: Response) => {
                 let count: number = await Source.count({});
 
                 if (count > 0) {
@@ -90,7 +113,7 @@ export class SourceRouter {
                 }
             })
 
-            .put(API_PREFIX + '/source/message/testdata', async (request: Request, response: Response) => {
+            .put('/source/message/testdata', async (request: Request, response: Response) => {
                 let sources: ISourceDocument[] = await Source.list();
                 if (sources.length == 0) {
                     response.status(400).send('Create some sources first!');
@@ -144,17 +167,35 @@ export class SourceRouter {
      * Pushes a message over the pushing channel.
      */
     public static async pushMessage(message: IMessageDocument) {
-        let source: string = message.source.name;
+        let source: ISourceDocument = message.source as ISourceDocument;
         let address: string = message.address;
         let content: string = message.content;
         let subscriptions: ISerializedPushSubscriptionDocument[] = await SerializedPushSubscription.list();
-        subscriptions.forEach(subscription => webpush.sendNotification({
-            endpoint: subscription.endpoint,
-            keys: {
-                auth: subscription.auth,
-                p256dh: subscription.p256dh
-            }
-        }, `${source}: ${content} (${address})`));
+        subscriptions.forEach(subscription => {
+            webpush
+                .sendNotification({
+                    endpoint: subscription.endpoint,
+                    keys: {
+                        auth: subscription.auth,
+                        p256dh: subscription.p256dh
+                    }
+                }, JSON.stringify({
+                    notification: {
+                        title: source.name,
+                        body: `${content} (${address})`,
+                        icon: '/assets/icon/android-icon-192x192.png',
+                        vibrate: [300, 100, 400],
+                        data: {
+                            url: '/sources/' + source._id + '/messages',
+                            id: source._id
+                        }
+                    }
+                }))
+                .catch(() => {
+                    subscription.remove();
+                });
+            debug('Push message send.')
+        });
     }
 }
 

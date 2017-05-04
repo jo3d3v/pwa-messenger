@@ -8,10 +8,15 @@ import { OfflineComponent } from './routes/offline/offline.component';
 const routes: Routes = [
     {
         path: '',
+        redirectTo: '/sources',
+        pathMatch: 'full'
+    },
+    {
+        path: 'sources',
         component: HomeComponent
     },
     {
-        path: ':id/messages',
+        path: 'sources/:id/messages',
         component: MessageComponent
     },
     {

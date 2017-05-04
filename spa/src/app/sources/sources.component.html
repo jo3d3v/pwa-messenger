@@ -2,7 +2,6 @@
     <md-list-item *ngFor="let source of sources | async" (click)="showMessages(source)">
         <span md-list-avatar class="source-avatar truck icon-{{source.type}}"></span>
         <h4 md-line><span class="source-title">{{source.name}}</span><span class="source-date">{{source.updated | date}}</span></h4>
-        <p class="source-message" md-line>{{source.lastMessage.content}}</p>
-        <span class="badge" *ngIf="source.newMessages > 0">{{source.newMessages}}</span>
+        <p class="source-message" [class.new]="source.hasNew" md-line>{{source.lastMessage.content}}</p>
     </md-list-item>
 </md-list>

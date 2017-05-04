@@ -22,4 +22,10 @@ export class MessageComponent implements OnInit {
       .switchMap((params: Params) => this.messengerService.source(params.id))
       .subscribe(source => this.source = source);
   }
+
+  generateMessage() {
+    this.route.params.subscribe((params: Params) => {
+      this.messengerService.generateMessage(params.id);
+    });
+  }
 }

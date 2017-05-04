@@ -2,6 +2,7 @@ import { ISource } from '../../../../server/src/shared/ISource';
 import { IMessage } from '../../../../server/src/shared/IMessage';
 
 export class Source implements ISource {
+    hasNew?: boolean;
     constructor(
         public _id: string,
         public name: string, 

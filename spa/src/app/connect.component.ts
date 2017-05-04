@@ -1,9 +1,8 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'connect-app',
   templateUrl: './connect.component.html',
-  styleUrls: ['./connect.component.scss'],
+  styleUrls: ['./connect.component.scss']
 })
-export class ConnectComponent {
-}
+export class ConnectComponent { }

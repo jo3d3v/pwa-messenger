@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "pwa-messenger root.",
     "scripts": {
-        "postinstall": "cd server && npm install && cd .. && cd spa && npm install"
+        "postinstall": "cd server && npm install"
     },
     "repository": {
         "type": "git",

@@ -1,13 +1,13 @@
 <connect-navbar [back]=false [title]="'CBT Connect'">
-    <button md-icon-button [mdMenuTriggerFor]="options">
+  <button md-icon-button [mdMenuTriggerFor]="options">
         <md-icon>menu</md-icon>
     </button>
 
-    <md-menu #options="mdMenu">
-        <button md-menu-item>
-            <span> Abmelden </span>
+  <md-menu #options="mdMenu">
+    <button md-menu-item (click)="togglePush()" [disabled]="!loaded">
+            <span> {{ pushActive ? 'Push deaktivieren' : 'Push aktivieren'}} </span>
         </button>
-    </md-menu>
+  </md-menu>
 </connect-navbar>
 
 <connect-sources></connect-sources>

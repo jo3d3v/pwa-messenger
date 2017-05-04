@@ -1,0 +1,82 @@
+{
+  "routing": {
+    "index": "/index.html",
+    "routes": {
+      "/": {
+        "prefix": false
+      },
+      "/sources": {
+        "prefix": true
+      }
+    }
+  },
+  "push": {
+    "showNotifications": true,
+    "backgroundOnly": false
+  },
+  "static": {
+    "urls": {
+      "/polyfills.275be326d4ffe4b40bc9.bundle.js": "bfe3273ff13e4302d27d90bb59a55d8996192c96",
+      "/main.047d6d2b85ef9713147d.bundle.js": "55797c57b69f64ca715051d885e6628cf47576d1",
+      "/sw-register.b73048fe3d9f8a1e7ae5.bundle.js": "a50dc6f21bb03ef77e881f16fd52303c86c99da9",
+      "/vendor.fd1f3380d92f952938cd.bundle.js": "7752544f186477f9a62eb9b9426e10095d9ef846",
+      "/inline.ffc7be8c748cdfd993df.bundle.js": "447e5c686ce8a770cbec8c4d3c87292c8096b842",
+      "/styles.4c52a33c450b01580e28.bundle.css": "a4b6bb6de40b03fa04acf3f9bda88d9892e28547",
+      "/polyfills.275be326d4ffe4b40bc9.bundle.js.map": "2b9a670a7d0e926eb01eb631ef9e6d5ad92c9bfc",
+      "/main.047d6d2b85ef9713147d.bundle.js.map": "43e1a1f04c4884958e9acc1f2ffcf55b42f0d63c",
+      "/styles.4c52a33c450b01580e28.bundle.css.map": "21230b461d4e0e1ac0281031ab58c1811d1295bf",
+      "/sw-register.b73048fe3d9f8a1e7ae5.bundle.js.map": "8ee09ef97d6106a4ed31a8ff78ff4adb296a97c0",
+      "/vendor.fd1f3380d92f952938cd.bundle.js.map": "d14fa49b37433131621e7ced8270f02821d585aa",
+      "/inline.ffc7be8c748cdfd993df.bundle.js.map": "11b5f67173f6c3bcc35db5239d816b981349a93d",
+      "/assets/css/font-awesome.css": "058a1f851683df1550ce4898453559f2902294f2",
+      "/assets/fonts/font_awesome/fontawesome-webfont.eot": "d980c2ce873dc43af460d4d572d441304499f400",
+      "/assets/fonts/font_awesome/fontawesome-webfont.svg": "98a8aa5cf7d62c2eff5f07ede8d844b874ef06ed",
+      "/assets/fonts/font_awesome/fontawesome-webfont.ttf": "13b1eab65a983c7a73bc7997c479d66943f7c6cb",
+      "/assets/fonts/font_awesome/fontawesome-webfont.woff": "28b782240b3e76db824e12c02754a9731a167527",
+      "/assets/fonts/font_awesome/fontawesome-webfont.woff2": "d6f48cba7d076fb6f2fd6ba993a75b9dc1ecbf0c",
+      "/assets/fonts/font_awesome/FontAwesome.otf": "048707bc52ac4b6563aaa383bfe8660a0ddc908c",
+      "/assets/fonts/material_icons/codepoints": "9f50ec0cced0115e7786e4e26b53ff35d2c0f0a0",
+      "/assets/fonts/material_icons/MaterialIcons-Regular.eot": "26fb8cecb5512223277b4d290a24492a0f09ede1",
+      "/assets/fonts/material_icons/MaterialIcons-Regular.ijmap": "df468e87685c24b2a5d431036d4d5a434efdc28e",
+      "/assets/fonts/material_icons/MaterialIcons-Regular.svg": "52ad95c4e0691e8c9b8ef97c551a9970eb498ca0",
+      "/assets/fonts/material_icons/MaterialIcons-Regular.ttf": "fc05de31234e0090f7ddc28ce1b23af4026cb1da",
+      "/assets/fonts/material_icons/MaterialIcons-Regular.woff": "c6c953c2ccb2ca9abb21db8dbf473b5a435f0082",
+      "/assets/fonts/material_icons/MaterialIcons-Regular.woff2": "09963592e8c953cc7e14e3fb0a5b05d5042e8435",
+      "/assets/fonts/roboto/Roboto-Bold.ttf": "0a1793926e2ee724cf2ff3fc7adc745348659f82",
+      "/assets/fonts/roboto/Roboto-Italic.ttf": "7703c7ab71c35f62289734f6b5431589008e700c",
+      "/assets/fonts/roboto/Roboto-Light.ttf": "2e3148d213b15328ebebba14e828fb3bf79634ee",
+      "/assets/fonts/roboto/Roboto-Medium.ttf": "08bab5b1ab478e8af2279b613d3a32636b85cc65",
+      "/assets/fonts/roboto/Roboto-Regular.ttf": "cb0cb91a31f43293bd7042ddab945ce161c29d3d",
+      "/assets/icon/android-icon-144x144.png": "9575829769edd875c4df3f78a6c69923f9c23e4e",
+      "/assets/icon/android-icon-192x192.png": "9b8cc8d28e19b4d1072a8d2c801e3fb820c5bf22",
+      "/assets/icon/android-icon-36x36.png": "97e49db0ab78a4d49456a2c3d352ab90f825b720",
+      "/assets/icon/android-icon-48x48.png": "da9e9f0f36dc806848bfe00a48975cc8bcf41627",
+      "/assets/icon/android-icon-72x72.png": "de2b30ef4c0484ec103f186fc80d4c14fd2c977c",
+      "/assets/icon/android-icon-96x96.png": "344df20a18d98b0844f1d841601fdf02b84d3020",
+      "/assets/icon/apple-icon-114x114.png": "b3101b459032dbcc575ca0371fd8f1ed0ac627ea",
+      "/assets/icon/apple-icon-120x120.png": "55873974beadae3c5a16e70f4c4e66e40a685886",
+      "/assets/icon/apple-icon-144x144.png": "9575829769edd875c4df3f78a6c69923f9c23e4e",
+      "/assets/icon/apple-icon-152x152.png": "2c9f701b0da7a465d74d95c96418783d7d0eded9",
+      "/assets/icon/apple-icon-180x180.png": "c2640511d6b4dfd58ba6046f9d3c1f283bbb41c9",
+      "/assets/icon/apple-icon-57x57.png": "493e9c725e132a873343da2f9429d611a4597915",
+      "/assets/icon/apple-icon-60x60.png": "516cbd86abd3c06cf186d270815c9fc996646cd6",
+      "/assets/icon/apple-icon-72x72.png": "de2b30ef4c0484ec103f186fc80d4c14fd2c977c",
+      "/assets/icon/apple-icon-76x76.png": "82b0096d81275d906ba5bc69333485ca17f1fee5",
+      "/assets/icon/apple-icon-precomposed.png": "ba99ad209c41443ae5d95e3281325e709c3d0c33",
+      "/assets/icon/apple-icon.png": "ba99ad209c41443ae5d95e3281325e709c3d0c33",
+      "/assets/icon/browserconfig.xml": "853389b6c4273965899eb1302d665eb91395fd0c",
+      "/assets/icon/favicon-16x16.png": "c10f5a4e9f1b381f652311a9fb5ec3d2cbc871ba",
+      "/assets/icon/favicon-32x32.png": "2e8a4923633c1919ea07b7c12a9adba8f5a395d6",
+      "/assets/icon/favicon-96x96.png": "344df20a18d98b0844f1d841601fdf02b84d3020",
+      "/assets/icon/ms-icon-144x144.png": "9575829769edd875c4df3f78a6c69923f9c23e4e",
+      "/assets/icon/ms-icon-150x150.png": "ad595d22847ff591e4d9b08f904f1f1223cb2af9",
+      "/assets/icon/ms-icon-310x310.png": "31c3b5ceb09067730b8e77389ab2d6ee9a20e889",
+      "/assets/icon/ms-icon-70x70.png": "cbc56861aa41c8ff60d831b24c680bb165e008cd",
+      "/assets/img/logo.svg": "3046d431553f7ba66f673b74653456341f9e12e9",
+      "/assets/robots.txt": "3ab05768bd908347af276df97617571b5f950c28",
+      "/manifest.json": "c6b5b1857c11f466e5e6a0deab3c49a275461ac4",
+      "/index.html": "266961c7ea450324a41c182ac2b31abd862719ae"
+    },
+    "_generatedFromWebpack": true
+  }
+}

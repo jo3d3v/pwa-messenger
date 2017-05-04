@@ -4,8 +4,11 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Message } from '../model/Message';
 import * as moment from 'moment';
+import { NgServiceWorker } from '@angular/service-worker';
 
 import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 
 @Component({
@@ -19,12 +22,18 @@ export class MessagesComponent implements OnInit {
 
   constructor(
     private messengerService: MessengerService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private sw: NgServiceWorker
   ) { }
 
   ngOnInit() {
-    this.messages = this.route.params
-      .switchMap((params: Params) => this.messengerService.messageList(params.id))
+    this.messages = Observable.merge(
+      this.route.params.map((params: Params) => params.id),
+      this.sw.push.map(data => {
+        return data.notification.data.id;
+      })
+    )
+      .switchMap((id: string) => this.messengerService.messageList(id))
       .map((messages: Message[]) => {
         for (let i = 0; i < messages.length; i++) {
           if (i > 0) {
