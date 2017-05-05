@@ -40,6 +40,10 @@
   .mat-card-header-text {
     display: table;
     padding-right: 30px;
+
+    @media all and (max-width: 390px) {
+      padding-right: 8px;
+    }
   }
 
   &.connect-message {
@@ -51,6 +55,10 @@
     max-width: 81%;
     width: auto;
     position: relative;
+
+    @media all and (max-width: 390px) {
+      width: 75%;
+    }
 
     .connect-message-header { margin-bottom: 0; }
 

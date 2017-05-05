@@ -4,9 +4,12 @@
     </button>
 
   <md-menu #options="mdMenu">
+    <button md-menu-item (click)="reinstallServiceWorker()">
+        <span> App neu installieren </span>
+    </button>
     <button md-menu-item (click)="togglePush()" [disabled]="!loaded">
-            <span> {{ pushActive ? 'Push deaktivieren' : 'Push aktivieren'}} </span>
-        </button>
+        <span> {{ pushActive ? 'Push deaktivieren' : 'Push aktivieren'}} </span>
+    </button>
   </md-menu>
 </connect-navbar>
 

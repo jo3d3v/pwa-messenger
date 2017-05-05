@@ -42,6 +42,7 @@
         white-space: nowrap;
         width: 90%;
         font-weight: 500;
+        float: left;
 
         @media all and (max-width: 990px) {
           width: 80%;
@@ -49,6 +50,10 @@
 
         @media all and (max-width: 560px) {
           width: 70%;
+        }
+
+        @media all and (max-width: 560px) {
+          width: 55%;
         }
       }
       .source-date {

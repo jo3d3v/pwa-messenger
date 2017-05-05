@@ -13,5 +13,34 @@
   "push": {
     "showNotifications": true,
     "backgroundOnly": false
+  },
+  "dynamic": {
+    "group": [{
+      "name": "sources",
+      "urls": {
+        "/api/source": {
+          "match": "exact"
+        }
+      },
+      "cache": {
+        "optimizeFor": "freshness",
+        "networkTimeoutMs": 200,
+        "strategy": "lru",
+        "maxEntries": 10
+      }
+    }, {
+      "name": "messages",
+      "urls": {
+        "^/api/source/[^/]+/message": {
+          "match": "regex"
+        }
+      },
+      "cache": {
+        "optimizeFor": "freshness",
+        "networkTimeoutMs": 200,
+        "strategy": "lru",
+        "maxEntries": 20
+      }
+    }]
   }
 }

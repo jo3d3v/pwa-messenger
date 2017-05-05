@@ -14,20 +14,52 @@
     "showNotifications": true,
     "backgroundOnly": false
   },
+  "dynamic": {
+    "group": [
+      {
+        "name": "sources",
+        "urls": {
+          "/api/source": {
+            "match": "exact"
+          }
+        },
+        "cache": {
+          "optimizeFor": "freshness",
+          "networkTimeoutMs": 200,
+          "strategy": "lru",
+          "maxEntries": 10
+        }
+      },
+      {
+        "name": "messages",
+        "urls": {
+          "^/api/source/[^/]+/message": {
+            "match": "regex"
+          }
+        },
+        "cache": {
+          "optimizeFor": "freshness",
+          "networkTimeoutMs": 200,
+          "strategy": "lru",
+          "maxEntries": 20
+        }
+      }
+    ]
+  },
   "static": {
     "urls": {
       "/polyfills.275be326d4ffe4b40bc9.bundle.js": "bfe3273ff13e4302d27d90bb59a55d8996192c96",
-      "/main.047d6d2b85ef9713147d.bundle.js": "55797c57b69f64ca715051d885e6628cf47576d1",
+      "/main.a9418287bbc8b99645a8.bundle.js": "f046c37e63734b56251b3f388ecc810c25cf9e85",
       "/sw-register.b73048fe3d9f8a1e7ae5.bundle.js": "a50dc6f21bb03ef77e881f16fd52303c86c99da9",
-      "/vendor.fd1f3380d92f952938cd.bundle.js": "7752544f186477f9a62eb9b9426e10095d9ef846",
-      "/inline.ffc7be8c748cdfd993df.bundle.js": "447e5c686ce8a770cbec8c4d3c87292c8096b842",
+      "/vendor.e1131534f34000e56964.bundle.js": "a33c76e232a6592a2001bcd070571968f2b029e5",
+      "/inline.4cff069de233fcb596e7.bundle.js": "29384b289a2e0551d9ca6e025e1a33e362ac68c0",
       "/styles.4c52a33c450b01580e28.bundle.css": "a4b6bb6de40b03fa04acf3f9bda88d9892e28547",
       "/polyfills.275be326d4ffe4b40bc9.bundle.js.map": "2b9a670a7d0e926eb01eb631ef9e6d5ad92c9bfc",
-      "/main.047d6d2b85ef9713147d.bundle.js.map": "43e1a1f04c4884958e9acc1f2ffcf55b42f0d63c",
+      "/main.a9418287bbc8b99645a8.bundle.js.map": "c1a768878a1d06c3699eb3c60efe71340dc8e3d0",
       "/styles.4c52a33c450b01580e28.bundle.css.map": "21230b461d4e0e1ac0281031ab58c1811d1295bf",
       "/sw-register.b73048fe3d9f8a1e7ae5.bundle.js.map": "8ee09ef97d6106a4ed31a8ff78ff4adb296a97c0",
-      "/vendor.fd1f3380d92f952938cd.bundle.js.map": "d14fa49b37433131621e7ced8270f02821d585aa",
-      "/inline.ffc7be8c748cdfd993df.bundle.js.map": "11b5f67173f6c3bcc35db5239d816b981349a93d",
+      "/vendor.e1131534f34000e56964.bundle.js.map": "ef9d30b16f4b2e4711a9252be40eccf76ec2dce6",
+      "/inline.4cff069de233fcb596e7.bundle.js.map": "4cb49d53659a8189a21bfbb4f7f38cefd4ed0a44",
       "/assets/css/font-awesome.css": "058a1f851683df1550ce4898453559f2902294f2",
       "/assets/fonts/font_awesome/fontawesome-webfont.eot": "d980c2ce873dc43af460d4d572d441304499f400",
       "/assets/fonts/font_awesome/fontawesome-webfont.svg": "98a8aa5cf7d62c2eff5f07ede8d844b874ef06ed",
@@ -75,7 +107,7 @@
       "/assets/img/logo.svg": "3046d431553f7ba66f673b74653456341f9e12e9",
       "/assets/robots.txt": "3ab05768bd908347af276df97617571b5f950c28",
       "/manifest.json": "c6b5b1857c11f466e5e6a0deab3c49a275461ac4",
-      "/index.html": "266961c7ea450324a41c182ac2b31abd862719ae"
+      "/index.html": "43bb7ced79a6936699c1845d5b06dc1d9e6cac22"
     },
     "_generatedFromWebpack": true
   }

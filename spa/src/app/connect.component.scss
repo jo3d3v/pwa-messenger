@@ -1,8 +1,8 @@
 .container {
   padding-top: 64px;
-  @media (max-width: 960px) and (orientation: landscape) {
+  /*@media (max-width: 960px) and (orientation: landscape) {
     padding-top: 48px;
-  }
+  }*/
   @media (max-width: 600px) and (orientation: portrait) {
     padding-top: 56px;
   }

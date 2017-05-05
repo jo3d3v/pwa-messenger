@@ -45,12 +45,14 @@ export class HomeComponent implements OnInit {
       if (this.pushActive) {
         this.sw
           .registerForPush()
-          // do not trigger unsubscribe on NgPushRegistration because, we use it later for resubscribe
-          .switchMap((handler: NgPushRegistration) => this.messengerService.unRegisterPush({
-            endpoint: handler.url,
-            auth: handler.auth(),
-            p256dh: handler.key()
-          }))
+          .switchMap((handler: NgPushRegistration) => {
+            handler.unsubscribe().subscribe();
+            return this.messengerService.unRegisterPush({
+              endpoint: handler.url,
+              auth: handler.auth(),
+              p256dh: handler.key()
+            });
+          })
           .subscribe(() => {
             this.pushActive = false;
             this.loaded = true;
@@ -87,5 +89,24 @@ export class HomeComponent implements OnInit {
       outputArray[i] = rawData.charCodeAt(i);
     }
     return outputArray;
+  }
+
+  reinstallServiceWorker() {
+    if ('serviceWorker' in navigator) {
+      navigator['serviceWorker']
+        .getRegistration()
+        .then(registration => {
+          registration
+            .unregister()
+            .then(result => {
+              if (result) {
+                window.location.reload();
+              }
+            });
+        })
+        .catch(error => {
+          console.log(error);
+        })
+    }
   }
 }

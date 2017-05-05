@@ -83,7 +83,7 @@ export class Server {
         this.express.use(function (request: express.Request, response: express.Response) {
             // respond with html page
             if (request.accepts('html')) {
-                response.sendfile(__dirname + '/../../spa/dist/index.html');;
+                response.sendfile(path.resolve(__dirname + '/../../spa/dist/index.html'));
                 return;
             }
 
