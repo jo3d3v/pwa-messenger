@@ -1,7 +1,10 @@
 <md-list class="source-list">
     <md-list-item *ngFor="let source of sources | async" (click)="showMessages(source)">
         <span md-list-avatar class="source-avatar truck icon-{{source.type}}"></span>
-        <h4 md-line><span class="source-title">{{source.name}}</span><span class="source-date">{{source.lastMessage.created | date}}</span></h4>
-        <p class="source-message" [class.new]="source.hasNew" md-line>{{source.lastMessage.content}}</p>
+        <h4 md-line>
+            <span class="source-title">{{source.name}}</span>
+            <span *ngIf="source.lastMessage" class="source-date">{{source.lastMessage.created | date}}</span>
+        </h4>
+        <p *ngIf="source.lastMessage" class="source-message" [class.new]="source.hasNew" md-line>{{source.lastMessage.content}}</p>
     </md-list-item>
 </md-list>

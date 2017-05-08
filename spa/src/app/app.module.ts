@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -46,7 +46,9 @@ import { UpdateDialogComponent } from './update-dialog/update-dialog.component';
     AppRoutingModule,
     ServiceWorkerModule
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: "de-DE" }
+  ],
   bootstrap: [ConnectComponent]
 })
 export class AppModule { }

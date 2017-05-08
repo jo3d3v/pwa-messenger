@@ -38,7 +38,7 @@
   }
 
   .mat-card-header-text {
-    display: table;
+    //display: table;
     padding-right: 30px;
 
     @media all and (max-width: 390px) {
@@ -52,13 +52,9 @@
     margin: 16px 0;
     border-radius: 10px;
     line-height: 18px;
-    max-width: 81%;
+    max-width: 80%;
     width: auto;
     position: relative;
-
-    @media all and (max-width: 390px) {
-      width: 75%;
-    }
 
     .connect-message-header { margin-bottom: 0; }
 
@@ -77,7 +73,7 @@
   .mat-card-title {
     margin: 16px 8px;
     font-weight: 300;
-    min-width: 95%;
+    min-width: 100%;
   }
 }
 

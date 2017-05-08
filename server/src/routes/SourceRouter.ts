@@ -102,14 +102,30 @@ export class SourceRouter {
             .put('/source/testdata', async (request: Request, response: Response) => {
                 let count: number = await Source.count({});
 
-                if (count > 0) {
-                    debug('There exist already ' + count + ' source(s). No test data will be created!');
-                    response.status(409).send('There exists already some data at the database.');
-                } else {
+                let creator = function () {
                     debug('No data found. Create some test data.');
                     Source.create(DUMMY_DATA.sources)
                         .then(() => response.sendStatus(200))
                         .catch((err) => response.status(500).send(err));
+                }
+
+                if (count > 0) {
+                    debug('There exist already ' + count + ' source(s). Droping sources!');
+                    Message.remove({}, (err) => {
+                        if (err) {
+                            response.status(500).send(err);
+                            return;
+                        }
+                        Source.remove({}, (err) => {
+                            if (err) {
+                                response.status(500).send(err);
+                                return;
+                            }
+                            creator();
+                        });
+                    });
+                } else {
+                    creator();
                 }
             })
 
@@ -120,11 +136,7 @@ export class SourceRouter {
                     return;
                 }
 
-                let count = await Message.count({});
-                if (count > 0) {
-                    debug('There exist already ' + count + ' message(s). No test data will be created!');
-                    response.status(409).send('There exists already some data at the database.');
-                } else {
+                let creator = async function () {
                     debug('Found ' + sources.length + ' source(s) for test-data-generation.')
 
                     // add a random message to a random source
@@ -141,6 +153,20 @@ export class SourceRouter {
                     }
 
                     response.sendStatus(200);
+                }
+
+                let count = await Message.count({});
+                if (count > 0) {
+                    debug('There exist already ' + count + ' message(s). Droping messages!');
+                    Message.remove({}, (err) => {
+                        if (err) {
+                            response.status(500).send(err);
+                            return;
+                        }
+                        creator();
+            });
+                } else {
+                    creator();
                 }
             });
     }
