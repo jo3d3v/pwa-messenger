@@ -1,0 +1,2 @@
+webpackJsonp([3,5],{1:function(r,e,o){r.exports=o("3WLI")},"3WLI":function(r,e){"serviceWorker"in navigator&&navigator.serviceWorker.register("worker-basic.min.js").catch(function(r){console.error("Error registering service worker:",r)})}},[1]);
+//# sourceMappingURL=sw-register.86a9be57c2122660cda4.bundle.js.map
