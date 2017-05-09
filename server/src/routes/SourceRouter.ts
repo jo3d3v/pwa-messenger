@@ -85,11 +85,13 @@ export class SourceRouter {
             // add unregister push subscription
             .delete('/push', async (request: Request, response: Response) => {
                 try {
-                    let subscriptions: ISerializedPushSubscriptionDocument[] = await SerializedPushSubscription.find(request.body);
-                    if (subscriptions.length > 0) {
-                        subscriptions.forEach((subscription) => {
-                            subscription.remove();
-                        });
+                    if (request.body.auth && request.body.endpoint && request.body.p256dh) {
+                        let subscriptions: ISerializedPushSubscriptionDocument[] = await SerializedPushSubscription.find(request.body);
+                        if (subscriptions.length > 0) {
+                            subscriptions.forEach((subscription) => {
+                                subscription.remove();
+                            });
+                        }
                     }
                     // TODO handle max count
                     response.sendStatus(200);
@@ -148,6 +150,7 @@ export class SourceRouter {
                         message = new Message(messages[Math.floor(Math.random() * messages.length)]);
                         message.source = source;
                         source.lastMessage = message._id;
+                        source.updated = new Date();
                         await message.save();
                         await source.save();
                     }
@@ -164,7 +167,7 @@ export class SourceRouter {
                             return;
                         }
                         creator();
-            });
+                    });
                 } else {
                     creator();
                 }
@@ -182,6 +185,7 @@ export class SourceRouter {
             message = new Message(messages[Math.floor(Math.random() * messages.length)]);
             message.source = source;
             source.lastMessage = message._id;
+            source.updated = new Date();
             await message.save();
             await source.save();
 

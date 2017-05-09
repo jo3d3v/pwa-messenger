@@ -1,6 +1,6 @@
 <h1 md-dialog-title>Anwendung aktualisieren</h1>
 <div md-dialog-content>Es liegt eine neue Anwendungsversion vor.</div>
 <div md-dialog-actions>
-  <button md-button (click)="dialogRef.close(false)">Abbrechen</button>
-  <button md-button (click)="dialogRef.close(true)">Aktualiseren</button>
+  <button md-button (click)="dialogRef.close()">Abbrechen</button>
+  <button md-button (click)="update()">Aktualiseren</button>
 </div>

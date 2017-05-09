@@ -42,7 +42,7 @@ export class MessengerService {
   }
 
   unRegisterPush(subscription: ISerializedPushSubscription): Observable<Response> {
-    return this.http.delete(environment.baseUrl + '/push', subscription);
+    return this.http.delete(environment.baseUrl + '/push', { body: subscription });
   }
 
   generateMessage(sourceId: string) {

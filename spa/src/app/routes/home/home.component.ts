@@ -46,12 +46,13 @@ export class HomeComponent implements OnInit {
         this.sw
           .registerForPush()
           .switchMap((handler: NgPushRegistration) => {
-            handler.unsubscribe().subscribe();
-            return this.messengerService.unRegisterPush({
+            let subscribtion = {
               endpoint: handler.url,
               auth: handler.auth(),
               p256dh: handler.key()
-            });
+            };
+            handler.unsubscribe().subscribe();
+            return this.messengerService.unRegisterPush(subscribtion);
           })
           .subscribe(() => {
             this.pushActive = false;

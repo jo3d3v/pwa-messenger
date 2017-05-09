@@ -4,6 +4,8 @@ import { MdDialog } from '@angular/material';
 import { UpdateDialogComponent } from './update-dialog/update-dialog.component';
 
 import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/filter';
 
 @Component({
   selector: 'connect-app',
@@ -18,18 +20,12 @@ export class ConnectComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.sw.checkForUpdate().subscribe();
     this.sw
       .updates
-      .distinctUntilChanged((lastEvent, newEvent) => lastEvent.version !== newEvent.version)
-      .subscribe((event: any) => {
-        if (event.type === 'pending') {
-          this.dialog
-            .open(UpdateDialogComponent, { disableClose: true })
-            .afterClosed()
-            .subscribe(result => {
-              this.sw.activateUpdate(event.version).subscribe();
-            });
-        }
-      })
+      .filter((event: any) => event.type === 'pending')
+      .distinctUntilChanged((event: any) => event.version)
+      .switchMap((event: any) => this.dialog.open(UpdateDialogComponent, { disableClose: true, data: { version: event.version } }).afterClosed())
+      .subscribe();
   }
 }
