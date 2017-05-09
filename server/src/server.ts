@@ -5,6 +5,7 @@ import * as bodyParser from 'body-parser';
 import * as errorHandler from 'errorhandler';
 import * as compression from 'compression';
 import * as cors from 'cors';
+import * as sslRedirect from 'heroku-ssl-redirect';
 import { SourceRouter } from './routes/SourceRouter';
 import { Database } from './database';
 import * as Debug from 'debug';
@@ -43,6 +44,7 @@ export class Server {
      * Configure application.
      */
     private configure(): void {
+        this.express.use(sslRedirect());
         this.express.use(cors());
         this.express.options('*', cors());
         this.express.use(compression());
