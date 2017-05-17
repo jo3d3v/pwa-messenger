@@ -3,7 +3,7 @@
   "short_name": "Connect",
   "start_url": ".",
   "dir": "ltr",
-  "display": "fullscreen",
+  "display": "standalone",
   "orientation": "portrait",
   "background_color": "#114194",
   "theme_color": "#4167A9",

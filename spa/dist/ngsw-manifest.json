@@ -59,7 +59,7 @@
       "/styles.4c52a33c450b01580e28.bundle.css.map": "21230b461d4e0e1ac0281031ab58c1811d1295bf",
       "/sw-register.86a9be57c2122660cda4.bundle.js.map": "96b0feceeeadfbbe764300a27d87b7763768eb1d",
       "/vendor.b07aab228459ab5d74d2.bundle.js.map": "cef3a050a4fddc1d0cf9e21fe5801705a16639a4",
-      "/inline.3ecb7d951c3445c34665.bundle.js.map": "0d5efa330205427a99f874a959fe5a1910398f00",
+      "/inline.3ecb7d951c3445c34665.bundle.js.map": "ab546d9376ee1427e96e403388f975910630a541",
       "/assets/css/font-awesome.css": "058a1f851683df1550ce4898453559f2902294f2",
       "/assets/fonts/font_awesome/fontawesome-webfont.eot": "d980c2ce873dc43af460d4d572d441304499f400",
       "/assets/fonts/font_awesome/fontawesome-webfont.svg": "98a8aa5cf7d62c2eff5f07ede8d844b874ef06ed",
@@ -82,8 +82,8 @@
       "/assets/icon/android-icon-144x144.png": "9575829769edd875c4df3f78a6c69923f9c23e4e",
       "/assets/icon/android-icon-192x192.png": "9b8cc8d28e19b4d1072a8d2c801e3fb820c5bf22",
       "/assets/icon/android-icon-36x36.png": "97e49db0ab78a4d49456a2c3d352ab90f825b720",
-      "/assets/icon/android-icon-48x48.png": "da9e9f0f36dc806848bfe00a48975cc8bcf41627",
       "/assets/icon/android-icon-72x72.png": "de2b30ef4c0484ec103f186fc80d4c14fd2c977c",
+      "/assets/icon/android-icon-48x48.png": "da9e9f0f36dc806848bfe00a48975cc8bcf41627",
       "/assets/icon/android-icon-96x96.png": "344df20a18d98b0844f1d841601fdf02b84d3020",
       "/assets/icon/apple-icon-114x114.png": "b3101b459032dbcc575ca0371fd8f1ed0ac627ea",
       "/assets/icon/apple-icon-120x120.png": "55873974beadae3c5a16e70f4c4e66e40a685886",
@@ -106,7 +106,7 @@
       "/assets/icon/ms-icon-70x70.png": "cbc56861aa41c8ff60d831b24c680bb165e008cd",
       "/assets/img/logo.svg": "3046d431553f7ba66f673b74653456341f9e12e9",
       "/assets/robots.txt": "3ab05768bd908347af276df97617571b5f950c28",
-      "/manifest.json": "c6b5b1857c11f466e5e6a0deab3c49a275461ac4",
+      "/manifest.json": "13e433bee645143bbe0f6a9437e29f5658cea9d3",
       "/index.html": "e68d2bf21bd6d25b481dc5885aefbf9c5658813d"
     },
     "_generatedFromWebpack": true
